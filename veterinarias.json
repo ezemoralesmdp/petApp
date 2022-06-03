@@ -1,0 +1,62 @@
+[
+  {
+    "nombre": "Las orejas de Kevin",
+    "horarios": "9 a 14:30 hs",
+    "direccion": "Monte y Amancay",
+    "barrio": "Mataderos",
+    "descripcion": "Especializacion: castración y desparacitación de perros. Tienda.",
+    "castracion": true,
+    "desparacitacion": true,
+    "adopcion": false,
+    "peluqueria": true,
+    "tienda": true
+  },
+  {
+    "nombre": "Paprika",
+    "horarios": "8:15 a 14:30 hs",
+    "direccion": "Pavon y Virrey Cevallos",
+    "barrio": "Constitución",
+    "descripcion": "Especializacion: castración y desparacitación de gatos. Adopción disponible",
+    "castracion": true,
+    "desparacitacion": true,
+    "adopcion": true,
+    "peluqueria": true,
+    "tienda": false
+  },
+  {
+    "nombre": "Veterinaria Wendy",
+    "horarios": "8:15 a 14:30 hs",
+    "direccion": "La Rioja y Cochabamba",
+    "barrio": "San Cristobal",
+    "descripcion": "Especializacion: castración y desparacitación de perros y gatos. Tienda.",
+    "castracion": true,
+    "desparacitacion": true,
+    "adopcion": false,
+    "peluqueria": false,
+    "tienda": true
+  },
+  {
+    "nombre": "Ringo",
+    "horarios": "8:15 a 14:30 hs",
+    "direccion": "Fco. Bilbao y Lacarra",
+    "barrio": "Parque Avellaneda",
+    "descripcion": "Especializacion: peluquería canina. Tienda.",
+    "castracion": false,
+    "desparacitacion": true,
+    "adopcion": false,
+    "peluqueria": true,
+    "tienda": true
+  },
+  {
+    "nombre": "Walrus",
+    "horarios": "08:00hs a 06:00 hs",
+    "direccion": "Cuenca 2500",
+    "barrio": "Villa del Parque",
+    "descripcion": "Especializacion: castración y desparacitación de perros y gatos. Peluquería animal. Adopción disponible. Tienda.",
+    "castracion": true,
+    "desparacitacion": true,
+    "adopcion": true,
+    "peluqueria": true,
+    "tienda": true
+  }
+]
