@@ -7,6 +7,7 @@ public class User {
 	//Atributes
 	private String user;
 	private String password;
+	private String email;
 	private String name;
 	private int age;
 	private HashMap<String, Animal> animals;
