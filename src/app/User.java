@@ -14,16 +14,22 @@ public class User {
 	private boolean isEnabledForFostering;
 	
 	//Constructor
-	public User(String user, String password, String name, int age, HashMap<String, Animal> animals,
-			boolean isEnabledForFostering) {
-		super();
-		this.user = user;
-		this.password = password;
-		this.name = name;
-		this.age = age;
-		this.animals = animals;
-		this.isEnabledForFostering = isEnabledForFostering;
+	
+	public User() {
+		//Constructor vacio porque seteamos todos los atributos desde el registro (PetApp.java)
+		animals = new HashMap<String, Animal>(); //Inicializamos la lista de animales del usuario vacia para luego utilizar metodos
 	}
+	
+//	public User(String user, String password, String name, int age, HashMap<String, Animal> animals,
+//			boolean isEnabledForFostering) {
+//		super();
+//		this.user = user;
+//		this.password = password;
+//		this.name = name;
+//		this.age = age;
+//		this.animals = animals;
+//		this.isEnabledForFostering = isEnabledForFostering;
+//	}
 
 	//Getters & Setters
 	public String getUser() {
@@ -73,4 +79,12 @@ public class User {
 	public void setEnabledForFostering(boolean isEnabledForFostering) {
 		this.isEnabledForFostering = isEnabledForFostering;
 	}	
+	
+	public String getEmail() {
+		return email;
+	}
+	
+	public void setEmail(String email) {
+		this.email = email;
+	}
 }

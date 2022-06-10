@@ -8,16 +8,21 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		String fuente = JSONUtilities.leer("veterinarias");
+		//Cargar hashMap con usuarios antes de inicializar la PetApp
 		
-		System.out.println(fuente);
+		PetApp petApp = new PetApp();
+		petApp.menu();
 		
-		try {
-			JSONArray obj = new JSONArray(fuente);
-		} catch (JSONException e) {
-			
-			e.printStackTrace();
-		}	
+//		String fuente = JSONUtilities.leer("veterinarias");
+//		
+//		System.out.println(fuente);
+//		
+//		try {
+//			JSONArray obj = new JSONArray(fuente);
+//		} catch (JSONException e) {
+//			
+//			e.printStackTrace();
+//		}	
 		
 		
 	}
