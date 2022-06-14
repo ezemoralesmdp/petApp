@@ -1,8 +1,9 @@
 package app;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class User {
+public class User implements Serializable{
 	
 	//Atributes
 	private String user;

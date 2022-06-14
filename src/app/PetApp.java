@@ -1,11 +1,13 @@
 package app;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Scanner;
 
 public class PetApp {
 	
-	private HashMap<String, User> users = FileManager.fileToHashMap();
+	private HashMap<String, User> users = FileManager.readAndUploadUsersFileToHashmap();//recibe el hashmap temporal creado con los usuarios del archivo
 	
 	Scanner input = new Scanner(System.in);
 	
@@ -55,13 +57,32 @@ public class PetApp {
 	public void singUp() {
 		
 		User temporary = new User(); //Usuario temporal para setear datos
+		Iterator<Map.Entry<String,User>> rows = users.entrySet().iterator();//recorrer el hashmap y verificar los datos que necesitamos en cada instancia
 		
 		try {
 			
 			input.nextLine();
 			
-			System.out.println("Ingrese el nombre de usuario: ");
-			temporary.setUser(input.nextLine()); 
+			boolean find = false;
+
+				do {
+					System.out.println("Ingrese el nombre de usuario: ");
+					String key=input.nextLine();
+					
+					if(users.containsKey(key))//busca en el hashmap por clave user name
+					{
+						System.out.println("El usuario ya existe, por favor ingrese registre uno nuevo o inicie sesion");
+						find=true;
+					}
+					else
+					{
+						temporary.setUser(key); 
+						find=false;
+					}
+					
+				}while(find==true);
+				//busqueda por hashmap users
+
 			
 			System.out.println("Ingrese la contraseña: ");
 			temporary.setPassword(input.nextLine()); 
@@ -86,8 +107,11 @@ public class PetApp {
 				temporary.setEnabledForFostering(false);
 			}
 			
+			FileManager.saveAnUserInFile(temporary);//manda el user creado a la fn que lo guarda en el archivo
+			
 			System.out.println(temporary.getUser() + " fue registrado exitosamente!");
 		
+			
 			
 		}catch(Exception e) {
 			
@@ -112,6 +136,7 @@ public class PetApp {
 			System.out.println("Ingrese la contraseña: ");
 			password = input.nextLine();
 			
+			//mandar al menu interno de user
 			
 		}catch(Exception e) {
 			
