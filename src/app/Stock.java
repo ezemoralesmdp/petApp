@@ -16,4 +16,11 @@ public class Stock <E>{
 		quantity++;
 	}
 	
+	public void showProducts(int eachProduct) {
+		for (int i = 0; i < eachProduct; i++) {
+			System.out.println(i+1+") ");
+			System.out.println(stock.get(i).toString());
+		}
+	}
+	
 }
