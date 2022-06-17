@@ -10,7 +10,7 @@ public class Main {
 		
 		//Cargar hashMap con usuarios antes de inicializar la PetApp
 		
-		PetApp petApp = new PetApp();
+		MainMenuApp petApp = new MainMenuApp();
 		petApp.menu();
 		
 //		String fuente = JSONUtilities.leer("veterinarias");

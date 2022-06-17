@@ -7,6 +7,7 @@ public class Veterinary {
 	private String openingHours;
 	private String address;
 	private String neighborhood;
+	private PetShop petShop;
 	
 	
 	

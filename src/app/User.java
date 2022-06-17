@@ -1,7 +1,7 @@
 package app;
 
 import java.io.Serializable;
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public class User implements Serializable{
 	
@@ -11,14 +11,16 @@ public class User implements Serializable{
 	private String email;
 	private String name;
 	private int age;
-	private HashMap<String, Animal> animals;
+	private ArrayList <Animal> animals;
 	private boolean isEnabledForFostering;
+	private Wallet myWallet;
 	
 	//Constructor
 	
 	public User() {
 		//Constructor vacio porque seteamos todos los atributos desde el registro (PetApp.java)
-		animals = new HashMap<String, Animal>(); //Inicializamos la lista de animales del usuario vacia para luego utilizar metodos
+		animals = new ArrayList<Animal>();//Inicializamos la lista de animales del usuario vacia para luego utilizar metodos
+		myWallet=new Wallet();
 	}
 	
 //	public User(String user, String password, String name, int age, HashMap<String, Animal> animals,
@@ -65,12 +67,12 @@ public class User implements Serializable{
 		this.age = age;
 	}
 
-	public HashMap<String, Animal> getAnimals() {
+	public ArrayList<Animal> getAnimals() {
 		return animals;
 	}
 
-	public void setAnimals(HashMap<String, Animal> animals) {
-		this.animals = animals;
+	public void addAnimal(Animal animal) {
+		animals.add(animal);
 	}
 
 	public boolean isEnabledForFostering() {
@@ -88,4 +90,11 @@ public class User implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	@Override
+	public String toString() {
+		return "User [user=" + user + ", password=" + password + ", email=" + email + ", name=" + name + ", age=" + age
+				+ ", animals=" + animals + ", isEnabledForFostering=" + isEnabledForFostering + "]";
+	}
+	
 }
