@@ -5,7 +5,8 @@ import java.util.Scanner;
 public class UserMenuApp {
 	
 	Scanner input = new Scanner(System.in);
-
+	PetShop shop=new PetShop();
+	
 	public void menu(User loggedUser) {
 		int option = 0;
 
@@ -35,6 +36,16 @@ public class UserMenuApp {
 
 			case 3:
 				
+				break;
+			case 4:
+				
+			break;
+			case 5:
+				break;
+			case 6:
+				
+				shop.cargarProductos();
+				shop.shopMenu();
 				break;
 
 			default:

@@ -10,8 +10,8 @@ public class Main {
 		
 		//Cargar hashMap con usuarios antes de inicializar la PetApp
 		
-		MainMenuApp petApp = new MainMenuApp();
-		petApp.menu();
+		//MainMenuApp petApp = new MainMenuApp();
+		//petApp.menu();
 		
 //		String fuente = JSONUtilities.leer("veterinarias");
 //		
@@ -24,6 +24,8 @@ public class Main {
 //			e.printStackTrace();
 //		}	
 		
+		UserMenuApp menu=new UserMenuApp();
+		menu.menu(new User());
 		
 	}
 	
