@@ -24,8 +24,27 @@ public class Main {
 //			e.printStackTrace();
 //		}	
 		
-		UserMenuApp menu=new UserMenuApp();
-		menu.menu(new User());
+		//Wallete de Garfield
+		Wallet aWallet = new Wallet();
+		aWallet.addCash(5000);
+		
+		//Sujeto de prueba Garfield
+		User testSubject = new User();
+		testSubject.setUser("michi666");
+		testSubject.setPassword("miau123");
+		testSubject.setEmail("iamsocute@gmail.com");
+		testSubject.setName("Garfield");
+		testSubject.setAge(5);
+		testSubject.setEnabledForFostering(true);
+		testSubject.setMyWallet(aWallet);
+		
+		//Creamos un shop
+		PetShop aPetShop = new PetShop(testSubject);
+		aPetShop.cargarProductos();
+		
+		//Entramos al menu directamente para ahorrarnos el inicio de sesion
+		UserMenuApp menu = new UserMenuApp(testSubject, aPetShop);
+		menu.menu();
 		
 	}
 	

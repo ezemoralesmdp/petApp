@@ -1,6 +1,7 @@
 package app;
 
 public class Wallet {
+	
 	private double amount;
 
 	public Wallet() {

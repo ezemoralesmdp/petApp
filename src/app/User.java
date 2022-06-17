@@ -90,6 +90,14 @@ public class User implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	public Wallet getMyWallet() {
+		return myWallet;
+	}
+	
+	public void setMyWallet(Wallet myWallet) {
+		this.myWallet = myWallet;
+	}
 
 	@Override
 	public String toString() {
