@@ -1,6 +1,8 @@
 package app;
 
-public class Animal {
+import java.io.Serializable;
+
+public abstract class Animal implements Serializable {
 
 	//Atributes
 	private String name;
