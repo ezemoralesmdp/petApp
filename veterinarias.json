@@ -5,84 +5,13 @@
     "direccion": "Monte y Amancay",
     "barrio": "Mataderos",
     "descripcion": "Especializacion: castración y desparacitación de perros. Tienda.",
-    "castracion": true,
-    "desparacitacion": true,
-    "adopcion": false,
-    "peluqueria": true,
-    "isTienda": true,
-    "products": 
-    	[
-    		{ "nombre": "Pelota De Goma Caucho Maciza Para Perros 7.5 Cm X 3 Unidades",
-    		  "precio": 1099.99
-    		},
-    		{ "nombre": "Cuerda con nudos Perros",
-    		  "precio": 1099.99
-    		},
-    		{ "nombre": "Puzzle para perros comedero",
-    		  "precio": 6590.00
-    		},
-    		{ "nombre": "Juguete Perro Cuerda Circular",
-    		  "precio": 3000
-    		},
-    		{ "nombre": "Pescado Interactivo con Carga Micro USB",
-    		  "precio": 5490.69
-    		},
-    		{ "nombre": "Pelota Porfiada, Ratón y Plumas",
-    		  "precio": 1200.50
-    		},
-    		
-    		
-    		{ "nombre": "Poncho Capa Buzo Abrigo Polar Para Mascotas Talles Varios",
-    		  "precio": 1445.99
-    		},
-    		{ "nombre": "Camperas Abrigos Mascotas Perros Cachorros",
-    		  "precio": 2962.00
-    		},
-    		{ "nombre": "Polar rosa talle 2 Perro",
-    		  "precio": 1599.00
-    		},
-    		{ "nombre": "Polar azul talle 5 Perro",
-    		  "precio": 1599.00
-    		},
-    		{ "nombre": "Polar rosa talle 2 Perro",
-    		  "precio": 1599.00
-    		},
-    		{ "nombre": "Polar naranja talle 3",
-    		  "precio": 1599.00
-    		},    		
-    		
-    		
-    		{ "nombre": "Royal Canin Urinary Care",
-    		  "precio": 17490.00
-    		},
-    		{ "nombre": "Royal Canin Ageing 12+ Feline",
-    		  "precio": 23990.00
-    		},
-    		{ "nombre": "Royal Canin Urinary Care",
-    		  "precio": 17490.00
-    		},
-    		{ "nombre": "Royal Canin Hepatic Feline 1.5 kg",
-    		  "precio": 19990.00
-    		},
-    		{ "nombre": "Royal Canin Mother & Babycat",
-    		  "precio": 12990.00
-    		},
-    		{ "nombre": "Royal Canin Gastrointestinal Canine",
-    		  "precio": 17090.00
-    		},
-    		{ "nombre": "Hill´s L/D Canine 7.98 kg",
-    		  "precio": 78500.00
-    		},
-    		{ "nombre": "Hill’s Science Diet Puppy",
-    		  "precio": 17990.00
-    		},
-    		{ "nombre": "Hill´s Natural Training Treat",
-    		  "precio": 4990.00
-    		},
-    		{ "nombre": "Royal Canin Puppy X-Small",
-    		  "precio": 11490.00
-    		}
-    	]
+    "servicios": [
+	    { "castracion": true },
+	    { "desparacitacion": true },
+	    { "adopcion": false },
+	    { "peluqueria": true },
+	    { "isTienda": true }
+    ]
   },
   {
     "nombre": "Paprika",
@@ -90,12 +19,13 @@
     "direccion": "Pavon y Virrey Cevallos",
     "barrio": "Constitución",
     "descripcion": "Especializacion: castración y desparacitación de gatos. Adopción disponible",
-    "castracion": true,
-    "desparacitacion": true,
-    "adopcion": true,
-    "peluqueria": true,
-    "isTienda": false,
-    "products": []
+    "servicios": [
+	    { "castracion": true },
+	    { "desparacitacion": false },
+	    { "adopcion": false },
+	    { "peluqueria": true },
+	    { "isTienda": false }
+    ]
   },
   {
     "nombre": "Veterinaria Wendy",
@@ -103,84 +33,13 @@
     "direccion": "La Rioja y Cochabamba",
     "barrio": "San Cristobal",
     "descripcion": "Especializacion: castración y desparacitación de perros y gatos. Tienda.",
-    "castracion": true,
-    "desparacitacion": true,
-    "adopcion": false,
-    "peluqueria": false,
-    "isTienda": true,
-    "products": 
-	[
-		{ "nombre": "Pelota De Goma Caucho Maciza Para Perros 7.5 Cm X 3 Unidades",
-		  "precio": 1099.99
-		},
-		{ "nombre": "Cuerda con nudos Perros",
-		  "precio": 1099.99
-		},
-		{ "nombre": "Puzzle para perros comedero",
-		  "precio": 6590.00
-		},
-		{ "nombre": "Juguete Perro Cuerda Circular",
-		  "precio": 3000
-		},
-		{ "nombre": "Pescado Interactivo con Carga Micro USB",
-		  "precio": 5490.69
-		},
-		{ "nombre": "Pelota Porfiada, Ratón y Plumas",
-		  "precio": 1200.50
-		},
-		
-		
-		{ "nombre": "Poncho Capa Buzo Abrigo Polar Para Mascotas Talles Varios",
-		  "precio": 1445.99
-		},
-		{ "nombre": "Camperas Abrigos Mascotas Perros Cachorros",
-		  "precio": 2962.00
-		},
-		{ "nombre": "Polar rosa talle 2 Perro",
-		  "precio": 1599.00
-		},
-		{ "nombre": "Polar azul talle 5 Perro",
-		  "precio": 1599.00
-		},
-		{ "nombre": "Polar rosa talle 2 Perro",
-		  "precio": 1599.00
-		},
-		{ "nombre": "Polar naranja talle 3",
-		  "precio": 1599.00
-		},    		
-		
-		
-		{ "nombre": "Royal Canin Urinary Care",
-		  "precio": 17490.00
-		},
-		{ "nombre": "Royal Canin Ageing 12+ Feline",
-		  "precio": 23990.00
-		},
-		{ "nombre": "Royal Canin Urinary Care",
-		  "precio": 17490.00
-		},
-		{ "nombre": "Royal Canin Hepatic Feline 1.5 kg",
-		  "precio": 19990.00
-		},
-		{ "nombre": "Royal Canin Mother & Babycat",
-		  "precio": 12990.00
-		},
-		{ "nombre": "Royal Canin Gastrointestinal Canine",
-		  "precio": 17090.00
-		},
-		{ "nombre": "Hill´s L/D Canine 7.98 kg",
-		  "precio": 78500.00
-		},
-		{ "nombre": "Hill’s Science Diet Puppy",
-		  "precio": 17990.00
-		},
-		{ "nombre": "Hill´s Natural Training Treat",
-		  "precio": 4990.00
-		},
-		{ "nombre": "Royal Canin Puppy X-Small",
-		  "precio": 11490.00
-		}
-	]
+    "servicios": [
+	    { "castracion": true },
+	    { "desparacitacion": true },
+	    { "adopcion": false },
+	    { "peluqueria": false },
+	    { "isTienda": true }
+    ]
   },
   {
     "nombre": "Ringo",
@@ -188,84 +47,13 @@
     "direccion": "Fco. Bilbao y Lacarra",
     "barrio": "Parque Avellaneda",
     "descripcion": "Especializacion: peluquería canina. Tienda.",
-    "castracion": false,
-    "desparacitacion": true,
-    "adopcion": false,
-    "peluqueria": true,
-    "isTienda": true,
-    "products": 
-	[
-		{ "nombre": "Pelota De Goma Caucho Maciza Para Perros 7.5 Cm X 3 Unidades",
-		  "precio": 1099.99
-		},
-		{ "nombre": "Cuerda con nudos Perros",
-		  "precio": 1099.99
-		},
-		{ "nombre": "Puzzle para perros comedero",
-		  "precio": 6590.00
-		},
-		{ "nombre": "Juguete Perro Cuerda Circular",
-		  "precio": 3000
-		},
-		{ "nombre": "Pescado Interactivo con Carga Micro USB",
-		  "precio": 5490.69
-		},
-		{ "nombre": "Pelota Porfiada, Ratón y Plumas",
-		  "precio": 1200.50
-		},
-		
-		
-		{ "nombre": "Poncho Capa Buzo Abrigo Polar Para Mascotas Talles Varios",
-		  "precio": 1445.99
-		},
-		{ "nombre": "Camperas Abrigos Mascotas Perros Cachorros",
-		  "precio": 2962.00
-		},
-		{ "nombre": "Polar rosa talle 2 Perro",
-		  "precio": 1599.00
-		},
-		{ "nombre": "Polar azul talle 5 Perro",
-		  "precio": 1599.00
-		},
-		{ "nombre": "Polar rosa talle 2 Perro",
-		  "precio": 1599.00
-		},
-		{ "nombre": "Polar naranja talle 3",
-		  "precio": 1599.00
-		},    		
-		
-		
-		{ "nombre": "Royal Canin Urinary Care",
-		  "precio": 17490.00
-		},
-		{ "nombre": "Royal Canin Ageing 12+ Feline",
-		  "precio": 23990.00
-		},
-		{ "nombre": "Royal Canin Urinary Care",
-		  "precio": 17490.00
-		},
-		{ "nombre": "Royal Canin Hepatic Feline 1.5 kg",
-		  "precio": 19990.00
-		},
-		{ "nombre": "Royal Canin Mother & Babycat",
-		  "precio": 12990.00
-		},
-		{ "nombre": "Royal Canin Gastrointestinal Canine",
-		  "precio": 17090.00
-		},
-		{ "nombre": "Hill´s L/D Canine 7.98 kg",
-		  "precio": 78500.00
-		},
-		{ "nombre": "Hill’s Science Diet Puppy",
-		  "precio": 17990.00
-		},
-		{ "nombre": "Hill´s Natural Training Treat",
-		  "precio": 4990.00
-		},
-		{ "nombre": "Royal Canin Puppy X-Small",
-		  "precio": 11490.00
-		}
-	]
+    "servicios": [
+	    { "castracion": false },
+	    { "desparacitacion": true },
+	    { "adopcion": true },
+	    { "peluqueria": true },
+	    { "isTienda": true }
+    ]
   },
   {
     "nombre": "Walrus",
@@ -273,83 +61,12 @@
     "direccion": "Cuenca 2500",
     "barrio": "Villa del Parque",
     "descripcion": "Especializacion: castración y desparacitación de perros y gatos. Peluquería animal. Adopción disponible. Tienda.",
-    "castracion": true,
-    "desparacitacion": true,
-    "adopcion": true,
-    "peluqueria": true,
-    "isTienda": true,
-    "products": 
-	[
-		{ "nombre": "Pelota De Goma Caucho Maciza Para Perros 7.5 Cm X 3 Unidades",
-		  "precio": 1099.99
-		},
-		{ "nombre": "Cuerda con nudos Perros",
-		  "precio": 1099.99
-		},
-		{ "nombre": "Puzzle para perros comedero",
-		  "precio": 6590.00
-		},
-		{ "nombre": "Juguete Perro Cuerda Circular",
-		  "precio": 3000
-		},
-		{ "nombre": "Pescado Interactivo con Carga Micro USB",
-		  "precio": 5490.69
-		},
-		{ "nombre": "Pelota Porfiada, Ratón y Plumas",
-		  "precio": 1200.50
-		},
-		
-		
-		{ "nombre": "Poncho Capa Buzo Abrigo Polar Para Mascotas Talles Varios",
-		  "precio": 1445.99
-		},
-		{ "nombre": "Camperas Abrigos Mascotas Perros Cachorros",
-		  "precio": 2962.00
-		},
-		{ "nombre": "Polar rosa talle 2 Perro",
-		  "precio": 1599.00
-		},
-		{ "nombre": "Polar azul talle 5 Perro",
-		  "precio": 1599.00
-		},
-		{ "nombre": "Polar rosa talle 2 Perro",
-		  "precio": 1599.00
-		},
-		{ "nombre": "Polar naranja talle 3",
-		  "precio": 1599.00
-		},    		
-		
-		
-		{ "nombre": "Royal Canin Urinary Care",
-		  "precio": 17490.00
-		},
-		{ "nombre": "Royal Canin Ageing 12+ Feline",
-		  "precio": 23990.00
-		},
-		{ "nombre": "Royal Canin Urinary Care",
-		  "precio": 17490.00
-		},
-		{ "nombre": "Royal Canin Hepatic Feline 1.5 kg",
-		  "precio": 19990.00
-		},
-		{ "nombre": "Royal Canin Mother & Babycat",
-		  "precio": 12990.00
-		},
-		{ "nombre": "Royal Canin Gastrointestinal Canine",
-		  "precio": 17090.00
-		},
-		{ "nombre": "Hill´s L/D Canine 7.98 kg",
-		  "precio": 78500.00
-		},
-		{ "nombre": "Hill’s Science Diet Puppy",
-		  "precio": 17990.00
-		},
-		{ "nombre": "Hill´s Natural Training Treat",
-		  "precio": 4990.00
-		},
-		{ "nombre": "Royal Canin Puppy X-Small",
-		  "precio": 11490.00
-		}
-	]    
+    "servicios": [
+	    { "castracion": true },
+	    { "desparacitacion": true },
+	    { "adopcion": true },
+	    { "peluqueria": true },
+	    { "isTienda": true }
+    ]
   }
 ]

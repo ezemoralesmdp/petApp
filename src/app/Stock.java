@@ -2,7 +2,7 @@ package app;
 
 import java.util.ArrayList;
 
-public class Stock <E>{
+public class Stock <E> {
 
 	private ArrayList<E> stock;
 	private int quantity;

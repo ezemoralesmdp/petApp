@@ -1,15 +1,11 @@
 package app;
 
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-
-
-	public class JSONUtilities {
+	public class JSONUtiles {
+		
 //	public static void grabar(JSONArray array) {
 //		
 //		try {
@@ -26,14 +22,16 @@ import org.json.JSONException;
 	public static String leer(String archivo) 
 	{
 		String contenido = "";
+		
 		try 
 		{
-			contenido = new String(Files.readAllBytes(Paths.get(archivo+".json")));
+			contenido = new String(Files.readAllBytes(Paths.get(archivo + ".json")));
 		} 
 		catch (IOException e) 
 		{
 			e.printStackTrace();
 		}
+		
 		return contenido;
 	}
 }
