@@ -19,8 +19,8 @@ public class User implements Serializable{
 	
 	public User() {
 		//Constructor vacio porque seteamos todos los atributos desde el registro (PetApp.java)
-		animals = new ArrayList<Animal>();//Inicializamos la lista de animales del usuario vacia para luego utilizar metodos
-		myWallet=new Wallet();
+		animals = new ArrayList<Animal>(); //Inicializamos la lista de animales del usuario vacia para luego utilizar metodos
+		myWallet = new Wallet();
 	}
 	
 //	public User(String user, String password, String name, int age, HashMap<String, Animal> animals,

@@ -6,13 +6,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class UserMenuApp {
+public class UserMenuApp implements I_Administration {
 	
 	Scanner input = new Scanner(System.in);
 	String source = JSONUtiles.leer("veterinarias");
 	PetShop shop;
 	User loggedUser;
 	
+	//Constructor
 	public UserMenuApp(User loggedUser, PetShop aPetShop) {
 		this.loggedUser = loggedUser;
 		this.shop = aPetShop;
@@ -49,11 +50,12 @@ public class UserMenuApp {
 
 			//Ver veterinarias
 			case 2:
-				seeAllVeterinaries();
+				menuVeterinaries();
 				break;
 
 			//Agrega tu mascota
 			case 3:
+				addAnimal();
 				break;
 				
 			//Poner en adopcion
@@ -86,10 +88,52 @@ public class UserMenuApp {
 	}
 
 	public void addAnimal() {
-
+		
+		int option = 0;
+		
+		do {
+			
+			System.out.println("\n[ADMINISTRAR TUS MASCOTAS]\n");
+			
+			System.out.println("1) Agregar mascota");
+			System.out.println("2) Editar mascota");
+			System.out.println("3) Eliminas mascota");
+			System.out.println("4) Ver todas tus mascotas");
+			
+			System.out.println();
+			System.out.println("0) Salir");
+			
+			System.out.print("\nOpcion: ");
+			option = input.nextInt();
+			
+			switch(option) {
+			
+			case 0:
+				break;
+				
+			case 1:
+				System.out.println("\n[AGREGAR MASCOTA]");
+				add();
+				break;
+				
+			case 2:
+				break;
+				
+			case 3:
+				break;
+				
+			case 4:
+				System.out.println("\n[VER TODAS LAS MASCOTAS]");
+				seeAll();
+				break;
+				
+			}
+			
+		}while(option >= 1 || option >= 4);
+		
 	}
 	
-	public void seeAllVeterinaries() {
+	public void menuVeterinaries() {
 		
 		int option = 0;
 		
@@ -118,27 +162,27 @@ public class UserMenuApp {
 			
 			case 1:
 				System.out.println("[FILTRADO POR CASTRACION]\n");
-				filterByCastration();
+				filterByOption("castracion", -1);
 				break;
 				
 			case 2:
 				System.out.println("[FILTRADO POR DESPARACITACIÓN]\n");
-				filterByDeworming();
+				filterByOption("desparacitacion", 0);
 				break;
 				
 			case 3:
 				System.out.println("[FILTRADO POR ADOPCION]\n");
-				filterByAdoption();
+				filterByOption("adopcion", 1);
 				break;
 				
 			case 4:
 				System.out.println("[FILTRADO POR PELUQUERIA]\n");
-				filterByHairdresser();
+				filterByOption("peluqueria", 2);
 				break;
 				
 			case 5:
 				System.out.println("[FILTRADO POR TIENDA - SHOP]\n");
-				filterByShop();
+				filterByOption("isTienda", 3);
 				break;
 				
 			case 9:
@@ -151,8 +195,7 @@ public class UserMenuApp {
 		
 	}
 	
-	//Filtrados
-	public void filterByCastration() {
+	public void filterByOption(String option, int selectionCase) {
 		
 		try {
 			
@@ -162,9 +205,9 @@ public class UserMenuApp {
 					
 				JSONObject obj = array.getJSONObject(i);
 				JSONArray array_services = obj.getJSONArray("servicios");
-				JSONObject obj2 = array_services.getJSONObject(0);
+				JSONObject obj2 = array_services.getJSONObject(selectionCase + 1);
 				
-				if(obj2.getBoolean("castracion") == true) {
+				if(obj2.getBoolean(option) == true) {
 					
 					String nombre = obj.getString("nombre");
 					String horarios = obj.getString("horarios");
@@ -185,157 +228,9 @@ public class UserMenuApp {
 		} catch (JSONException e) {
 			
 			e.printStackTrace();
-		}
-		
-	}
-	
-	public void filterByDeworming() {
-		
-		try {
-			
-			JSONArray array = new JSONArray(source);
-			
-			for(int i = 0; i < array.length(); i++) {
-					
-				JSONObject obj = array.getJSONObject(i);
-				JSONArray array_services = obj.getJSONArray("servicios");
-				JSONObject obj2 = array_services.getJSONObject(1);
-				
-				if(obj2.getBoolean("desparacitacion") == true) {
-					
-					String nombre = obj.getString("nombre");
-					String horarios = obj.getString("horarios");
-					String direccion = obj.getString("direccion");
-					String barrio = obj.getString("barrio");
-					String descripcion = obj.getString("descripcion");
-					
-					System.out.println(nombre);
-					System.out.println(horarios);
-					System.out.println(direccion);
-					System.out.println(barrio);
-					System.out.println(descripcion);
-					System.out.println();
-
-				}
-			}
-			
-		} catch (JSONException e) {
-			
-			e.printStackTrace();
-		}
-		
-	}
-	
-	public void filterByAdoption() {
-		
-		try {
-			
-			JSONArray array = new JSONArray(source);
-			
-			for(int i = 0; i < array.length(); i++) {
-					
-				JSONObject obj = array.getJSONObject(i);
-				JSONArray array_services = obj.getJSONArray("servicios");
-				JSONObject obj2 = array_services.getJSONObject(2);
-				
-				if(obj2.getBoolean("adopcion") == true) {
-					
-					String nombre = obj.getString("nombre");
-					String horarios = obj.getString("horarios");
-					String direccion = obj.getString("direccion");
-					String barrio = obj.getString("barrio");
-					String descripcion = obj.getString("descripcion");
-					
-					System.out.println(nombre);
-					System.out.println(horarios);
-					System.out.println(direccion);
-					System.out.println(barrio);
-					System.out.println(descripcion);
-					System.out.println();
-
-				}
-			}
-			
-		} catch (JSONException e) {
-			
-			e.printStackTrace();
-		}
-		
-	}
-	
-	public void filterByHairdresser() {
-		
-		try {
-			
-			JSONArray array = new JSONArray(source);
-			
-			for(int i = 0; i < array.length(); i++) {
-					
-				JSONObject obj = array.getJSONObject(i);
-				JSONArray array_services = obj.getJSONArray("servicios");
-				JSONObject obj2 = array_services.getJSONObject(3);
-				
-				if(obj2.getBoolean("peluqueria") == true) {
-					
-					String nombre = obj.getString("nombre");
-					String horarios = obj.getString("horarios");
-					String direccion = obj.getString("direccion");
-					String barrio = obj.getString("barrio");
-					String descripcion = obj.getString("descripcion");
-					
-					System.out.println(nombre);
-					System.out.println(horarios);
-					System.out.println(direccion);
-					System.out.println(barrio);
-					System.out.println(descripcion);
-					System.out.println();
-
-				}
-			}
-			
-		} catch (JSONException e) {
-			
-			e.printStackTrace();
-		}
-		
+		}	
 	}
 
-	public void filterByShop() {
-		
-		try {
-			
-			JSONArray array = new JSONArray(source);
-			
-			for(int i = 0; i < array.length(); i++) {
-					
-				JSONObject obj = array.getJSONObject(i);
-				JSONArray array_services = obj.getJSONArray("servicios");
-				JSONObject obj2 = array_services.getJSONObject(4);
-				
-				if(obj2.getBoolean("isTienda") == true) {
-					
-					String nombre = obj.getString("nombre");
-					String horarios = obj.getString("horarios");
-					String direccion = obj.getString("direccion");
-					String barrio = obj.getString("barrio");
-					String descripcion = obj.getString("descripcion");
-					
-					System.out.println(nombre);
-					System.out.println(horarios);
-					System.out.println(direccion);
-					System.out.println(barrio);
-					System.out.println(descripcion);
-					System.out.println();
-
-				}
-			}
-			
-		} catch (JSONException e) {
-			
-			e.printStackTrace();
-		}
-	}
-	
 	public void loaAndViewMoneyInMyWallet() {
 		
 		int loadMoney = 0;
@@ -361,6 +256,129 @@ public class UserMenuApp {
 		} else {
 			
 			System.out.println("Volviendo al menu principal...\n");
+		}
+	}
+
+	
+	@Override
+	public void add() {
+		
+		String name = "";
+
+		int optionSpecie = 0;
+		
+		String gender = "";
+		int optionGender = 0;
+		
+		String healthStatus = "";
+		int optionHealthStatus = 0;
+		
+		int age = 0;
+		
+		String breed = "";
+		
+		boolean isCastrate = false;
+		int optionisCastrate = 0;
+		
+		//Tipo de mascota
+		System.out.println("Seleccione el tipo de mascota que desea agregar:\n");
+		System.out.println("1- Perro");
+		System.out.println("2- Gato");
+		System.out.print("\nOpcion: ");
+		optionSpecie = input.nextInt();
+		
+		//Nombre mascota
+		System.out.println();
+		input.nextLine();
+		System.out.print("Ingrese el nombre de su mascota: ");
+		name = input.nextLine();
+		
+		//Genero mascota
+		System.out.println("\nIngrese el genero de su mascota:\n");
+		System.out.println("1- Macho");
+		System.out.println("2- Hembra");
+		System.out.print("\nOpcion: ");
+		
+		optionGender = input.nextInt();
+		
+		if(optionGender == 1) {
+			gender = "Macho";
+		} else if(optionGender == 2) {
+			gender = "Hembra";
+		}
+		
+		//Estado de salud mascota
+		System.out.println("\nIngrese el estado de su mascota:\n");
+		System.out.println("1- Saludable");
+		System.out.println("2- Reservado");
+		System.out.println("3- Malo");
+		System.out.print("\nOpcion: ");
+		optionHealthStatus = input.nextInt();
+		
+		if(optionHealthStatus == 1) {
+			healthStatus = "Saludable";
+		} else if(optionHealthStatus == 2) {
+			healthStatus = "Reservado";
+		} else if(optionHealthStatus == 3) {
+			healthStatus = "Malo";
+		}
+		
+		//Edad
+		System.out.print("\nIngrese la edad de su mascota: ");
+		age = input.nextInt();
+		
+		//Raza
+		input.nextLine();
+		System.out.print("\nIngrese la raza de su mascota (Si no es de raza aclararlo): ");
+		breed = input.nextLine();
+		
+		//Castracion
+		System.out.println("\nConfirme si su mascota se encuentra castrada o no");
+		System.out.println();
+		System.out.println("1- Se encuentra castrada");
+		System.out.println("2- No se encuentra castrada");
+		optionisCastrate = input.nextInt();
+		
+		if(optionisCastrate == 1) {
+			isCastrate = true;
+		} else if (optionisCastrate == 2) {
+			isCastrate = false;
+		}
+		
+		if(optionSpecie == 1) {
+			
+			Dog aux = new Dog(name, "Canino", gender, healthStatus, age, breed, isCastrate);
+			loggedUser.addAnimal(aux);
+			System.out.println(aux.getName() + " ha sido agregado con exito !");
+			
+		} else if(optionSpecie == 2) {
+			
+			Cat aux = new Cat(name, "Felino", gender, healthStatus, age, breed, isCastrate);
+			loggedUser.addAnimal(aux);
+			System.out.println(aux.getName() + " ha sido agregado con exito !");
+		}
+	}
+	
+
+	@Override
+	public void remove() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void edit() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void seeAll() {
+		
+		for (Animal pet : loggedUser.getAnimals()) {
+			
+			System.out.println(pet.toString());
+			//Falta mostrar vacunas y CARGARLAS
 		}
 	}
 	

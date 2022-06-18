@@ -11,14 +11,18 @@ public abstract class Animal implements Serializable {
 	private String healthStatus;
 	private int age;
 	private String birthdate;
+	private String breed;
+	private boolean isCastrate;
 	
 	//Constructor
-	public Animal(String name, String specie, String gender, String healthStatus, int age) {
+	public Animal(String name, String specie, String gender, String healthStatus, int age, String breed, boolean isCastrate) {
 		this.name = name;
 		this.specie = specie;
 		this.gender = gender;
 		this.healthStatus = healthStatus;
 		this.age = age;
+		this.breed = breed;
+		this.isCastrate = isCastrate;
 	}
 
 	//Getters & Setters
@@ -68,5 +72,30 @@ public abstract class Animal implements Serializable {
 
 	public void setBirthdate(String birthdate) {
 		this.birthdate = birthdate;
+	}
+	
+	public String getBreed() {
+		return breed;
+	}
+	
+	public boolean isCastrate() {
+		return isCastrate;
+	}
+	
+	@Override
+	public String toString() {
+		
+		String data = "";
+		
+		data = "Especie: " + getSpecie() + 
+				"\nNombre: " + getName() + 
+				"\nGenero: " + getGender() + 
+				"\nEdad: " + getAge() + 
+				"\nEstado de salud: " + getHealthStatus() + 
+				"\nRaza: " + getBreed() + 
+				"\nCastrado: " + isCastrate() +
+				"\n";
+		
+		return data;
 	}
 }
