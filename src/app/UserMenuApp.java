@@ -1,5 +1,6 @@
 package app;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import org.json.JSONArray;
@@ -73,6 +74,7 @@ public class UserMenuApp implements I_Administration {
 
 			// Opciones de usuario
 			case 7:
+				editUser();
 				break;
 
 			case 8:
@@ -80,7 +82,7 @@ public class UserMenuApp implements I_Administration {
 				break;
 
 			default:
-				System.out.println("Error. Número de operación incorrecta, por favor vuelva a ingresar la opción");
+				System.out.println("Error. Nï¿½mero de operaciï¿½n incorrecta, por favor vuelva a ingresar la opciï¿½n");
 				break;
 			}
 
@@ -147,9 +149,9 @@ public class UserMenuApp implements I_Administration {
 
 			System.out.println("Filtrar por: ");
 			System.out.println("1) Castracion");
-			System.out.println("2) Desparacitación");
-			System.out.println("3) Adopción");
-			System.out.println("4) Peluquería");
+			System.out.println("2) Desparacitaciï¿½n");
+			System.out.println("3) Adopciï¿½n");
+			System.out.println("4) Peluquerï¿½a");
 			System.out.println("5) Venta de Articulos");
 			System.out.println("6) Ver todas las veterinarias disponibles");
 
@@ -171,7 +173,7 @@ public class UserMenuApp implements I_Administration {
 				break;
 
 			case 2:
-				System.out.println("[FILTRADO POR DESPARACITACIÓN]\n");
+				System.out.println("[FILTRADO POR DESPARACITACIï¿½N]\n");
 				filterByOption("desparacitacion", 0);
 				break;
 
@@ -261,7 +263,7 @@ public class UserMenuApp implements I_Administration {
 		double addCash = 0;
 
 		System.out.println("Tu saldo actual es de: " + loggedUser.getMyWallet().getAmount());
-		System.out.println("¿Desea cargar saldo?\n 1 - Si | 2 - No\n");
+		System.out.println("ï¿½Desea cargar saldo?\n 1 - Si | 2 - No\n");
 
 		System.out.print("Opcion: ");
 
@@ -284,6 +286,84 @@ public class UserMenuApp implements I_Administration {
 		}
 	}
 
+	public void editUser() {
+		
+		int option = 0;
+		
+		do {
+
+			 String password;
+			 String email;
+			 String name;
+			 int age;
+			 boolean isEnabledForFostering;
+			
+			System.out.println("[EDITAR USUARIO]");
+			System.out.println("1) Ver informacion de usuario");
+			System.out.println("2) Cambiar contraseÃ±a");
+			System.out.println("3) Cambiar direccion de correo electronico");
+			System.out.println("4) Cambiar nombre");
+			System.out.println("5) Cambiar edad");
+			System.out.println("6) Cambiar disposicion a dar transito");
+			
+			System.out.println("\n0) Salir");
+			
+			System.out.println("\nOpcion: ");
+			
+			option = input.nextInt();
+			
+			switch(option) {
+			
+				case 1:
+					System.out.println(loggedUser.toString());
+					break;
+			
+				case 2: 
+					System.out.print("Ingrese su nueva contraseÃ±a: ");
+					password = input.nextLine();
+					loggedUser.setPassword(password);
+					System.out.println("La contraseÃ±a ha sido modificada exitosamente !");
+					break;
+				
+				case 3:
+					System.out.print("Ingrese su nueva direccion de correo electronico: ");
+					email = input.nextLine();
+					loggedUser.setEmail(email);
+					System.out.println("La direccion de correo electronico ha sido modificada exitosamente !");
+					break;
+					
+				case 4:
+					System.out.print("Ingrese su nuevo nombre: ");
+					name = input.nextLine();
+					loggedUser.setName(name);
+					System.out.println("La direccion de correo electronico ha sido modificada exitosamente !");
+					break;
+				
+				case 5:
+					System.out.print("Ingrese su nueva edad: ");
+					age = input.nextInt();
+					loggedUser.setAge(age);
+					System.out.println("La direccion de correo electronico ha sido modificada exitosamente !");
+					break;
+					
+				case 6:
+					System.out.println("Actualmente su disposicion a dar transito es: " + loggedUser.isEnabledForFostering());
+					System.out.println("Desea modificarlo? 1- Si | 2- No");
+					System.out.print("Opcion: ");
+					
+					isEnabledForFostering = (loggedUser.isEnabledForFostering() == true) ? false : true;
+					
+					loggedUser.setEnabledForFostering(isEnabledForFostering);
+					System.out.println("La disposicion a dar transido ha sido modificada exitosamente !");
+					break;
+			}
+			
+			System.out.println();
+			
+		}while(option >= 1 || option >= 6);
+		
+	}
+	
 	@Override
 	public void add() {
 

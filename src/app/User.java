@@ -3,7 +3,7 @@ package app;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class User implements Serializable{
+public class User implements Serializable {
 	
 	//Atributes
 	private String user;
@@ -109,8 +109,16 @@ public class User implements Serializable{
 
 	@Override
 	public String toString() {
-		return "User [user=" + user + ", password=" + password + ", email=" + email + ", name=" + name + ", age=" + age
-				+ ", animals=" + animals + ", isEnabledForFostering=" + isEnabledForFostering + "]";
+		
+		String aux = "";
+		
+		aux = "Usuario: " + user + "\n" + 
+			  "Nombre: " + name + "\n" + 
+			  "Correo electronico: " + email + "\n" +
+			  "Edad: " + age + "\n" + 
+			  "Transito: " + isEnabledForFostering + "\n";
+		
+		return aux;
 	}
 	
 }
