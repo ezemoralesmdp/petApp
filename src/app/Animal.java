@@ -15,6 +15,11 @@ public abstract class Animal implements Serializable {
 	private boolean isCastrate;
 	
 	//Constructor
+	
+	public Animal() {
+		
+	}
+	
 	public Animal(String name, String specie, String gender, String healthStatus, int age, String breed, boolean isCastrate) {
 		this.name = name;
 		this.specie = specie;
@@ -78,6 +83,13 @@ public abstract class Animal implements Serializable {
 		return breed;
 	}
 	
+	public void setBreed(String breed) {
+		this.breed = breed;
+	}
+	
+	public void setCastrate(boolean isCastrate) {
+		this.isCastrate = isCastrate;
+	}
 	public boolean isCastrate() {
 		return isCastrate;
 	}

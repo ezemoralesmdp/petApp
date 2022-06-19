@@ -137,13 +137,16 @@ public class PetShop {
 		
 		int option = 0;
 		int newStockQuantity = 0;
+		boolean notEnoughFounds;
 		
 		do {
 			
 			int confirmPurchase = 0;
 		
-			System.out.println("\nStock actual de juguetes: " + stockToys.getQuantity() + "\n");
-		
+			System.out.println("\nStock actual de Juguetes: " + stockToys.getQuantity());
+			System.out.println("Stock actual de Ropa: " + stockClothes.getQuantity());
+			System.out.println("Stock actual de Alimentos: " + stockFoods.getQuantity() + "\n");
+			
 			stockToys.showProducts(amountToys);
 			System.out.println("[!] Para volver al menu principal ingrese: 0 (cero)\n");
 			
@@ -163,9 +166,18 @@ public class PetShop {
 					System.out.print("Opcion: ");
 					confirmPurchase = input.nextInt();
 					
+					//Repetir operacion en todos los case PENDIENTE
+					
 					if(confirmPurchase == 1) {
-						loggedUser.getMyWallet().subtractionCash(toy1.getPrice());
-						newStockQuantity = stockToys.removeProductPerPurchase(toy1);
+						if(loggedUser.getMyWallet().getAmount()>toy1.getPrice()) {
+							loggedUser.getMyWallet().subtractionCash(toy1.getPrice());
+							newStockQuantity = stockToys.removeProductPerPurchase(toy1);
+						}
+						else {
+							System.out.println("No dispone de suficiente saldo para realizar la operacion.");
+							System.out.println("Te faltan: $" + (toy1.getPrice()-loggedUser.getMyWallet().getAmount()));
+							confirmPurchase=0;
+						}
 					}
 					
 					System.out.println();
@@ -253,7 +265,6 @@ public class PetShop {
 				
 				System.out.println("[!] Compra confirmada");
 				System.out.println("Su saldo actual es de: $" + loggedUser.getMyWallet().getAmount());
-				System.out.println("Stock de actual de juguetes: " + newStockQuantity);
 			}
 			
 		}while(option >= 1 || option >= 5);
@@ -269,7 +280,9 @@ public class PetShop {
 			
 			int confirmPurchase = 0;
 		
-			System.out.println("\nStock actual de ropa: " + stockClothes.getQuantity() + "\n");
+			System.out.println("\nStock actual de Ropa: " + stockClothes.getQuantity());
+			System.out.println("Stock actual de Juguetes: " + stockToys.getQuantity());
+			System.out.println("Stock actual de Alimentos: " + stockFoods.getQuantity() + "\n");
 		
 			stockClothes.showProducts(amountToys);
 			System.out.println("[!] Para volver al menu principal ingrese: 0 (cero)\n");
@@ -363,7 +376,6 @@ public class PetShop {
 				
 				System.out.println("[!] Compra confirmada");
 				System.out.println("Su saldo actual es de: $" + loggedUser.getMyWallet().getAmount());
-				System.out.println("Stock de actual de juguetes: " + newStockQuantity);
 			}
 			
 		}while(option >= 1 || option >= 4);
@@ -380,7 +392,9 @@ public class PetShop {
 			
 			int confirmPurchase = 0;
 		
-			System.out.println("\nStock actual de comidas: " + stockFoods.getQuantity() + "\n");
+			System.out.println("\nStock actual de Alimentos: " + stockFoods.getQuantity());
+			System.out.println("Stock actual de Juguetes: " + stockToys.getQuantity());
+			System.out.println("Stock actual de Ropa: " + stockClothes.getQuantity() + "\n");
 		
 			stockFoods.showProducts(amountFoods);
 			System.out.println("[!] Para volver al menu principal ingrese: 0 (cero)\n");
@@ -582,12 +596,18 @@ public class PetShop {
 				
 				System.out.println("[!] Compra confirmada");
 				System.out.println("Su saldo actual es de: $" + loggedUser.getMyWallet().getAmount());
-				System.out.println("Stock de actual de juguetes: " + newStockQuantity);
 			}
 			
 		}while(option >= 1 || option >= 10);
 		
-		
 	}
+	
+//	public <E> void purchaseOperation(Double productPrice,E product) {
+//		int newStockQuantity = 0;
+//		if(loggedUser.getMyWallet().getAmount()-productPrice>0) {
+//			loggedUser.getMyWallet().subtractionCash(productPrice);
+//			newStockQuantity = stockFoods.removeProductPerPurchase(product);
+//		}
+//	}
 
 }
