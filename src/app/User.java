@@ -74,6 +74,14 @@ public class User implements Serializable{
 	public void addAnimal(Animal animal) {
 		animals.add(animal);
 	}
+	
+	public void removeAnimal(int animal) {
+		animals.remove(animal);
+	}
+	
+	public void addAnimalAfterEdit(int index, Animal animal) {
+		animals.add(index, animal);
+	}
 
 	public boolean isEnabledForFostering() {
 		return isEnabledForFostering;

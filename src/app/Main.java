@@ -40,6 +40,7 @@ public class Main {
 		testSubject.setMyWallet(aWallet);
 		
 		//Creamos un shop
+		//A partir del segundo usuario setear el usuario que ya existe
 		PetShop aPetShop = new PetShop(testSubject);
 		aPetShop.cargarProductos();
 		
