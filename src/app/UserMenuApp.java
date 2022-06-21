@@ -1,7 +1,7 @@
 package app;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.nio.file.ReadOnlyFileSystemException;
+import java.util.*;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,6 +25,8 @@ public class UserMenuApp implements I_Administration {
 		int option = 0;
 
 		do {
+			
+			option = 0;
 
 			System.out.println("Bienvenido " + loggedUser.getName() + "!");
 			System.out.println("SALDO ACTUAL: $" + loggedUser.getMyWallet().getAmount() + "\n");
@@ -40,7 +42,6 @@ public class UserMenuApp implements I_Administration {
 
 			System.out.println();
 			System.out.print("Opcion: ");
-
 			option = input.nextInt();
 
 			switch (option) {
@@ -51,9 +52,10 @@ public class UserMenuApp implements I_Administration {
 
 			// Ver veterinarias
 			case 2:
+								
 				menuVeterinaries();
 				break;
-
+				
 			// Agrega tu mascota
 			case 3:
 				addAnimal();
@@ -142,65 +144,87 @@ public class UserMenuApp implements I_Administration {
 	public void menuVeterinaries() {
 
 		int option = 0;
-
+		boolean next = false;
+			
 		do {
-
-			System.out.println("\n[VETERINARIAS DISPONIBLES]\n");
-
-			System.out.println("Filtrar por: ");
-			System.out.println("1) Castracion");
-			System.out.println("2) Desparacitaciï¿½n");
-			System.out.println("3) Adopciï¿½n");
-			System.out.println("4) Peluquerï¿½a");
-			System.out.println("5) Venta de Articulos");
-			System.out.println("6) Ver todas las veterinarias disponibles");
-
-			System.out.println();
-			System.out.println("0) Volver al menu principal");
-
-			System.out.println();
-			System.out.print("Opcion: ");
-
-			option = input.nextInt();
-
-			System.out.println();
-
-			switch (option) {
-
-			case 1:
-				System.out.println("[FILTRADO POR CASTRACION]\n");
-				filterByOption("castracion", -1);
-				break;
-
-			case 2:
-				System.out.println("[FILTRADO POR DESPARACITACIï¿½N]\n");
-				filterByOption("desparacitacion", 0);
-				break;
-
-			case 3:
-				System.out.println("[FILTRADO POR ADOPCION]\n");
-				filterByOption("adopcion", 1);
-				break;
-
-			case 4:
-				System.out.println("[FILTRADO POR PELUQUERIA]\n");
-				filterByOption("peluqueria", 2);
-				break;
-
-			case 5:
-				System.out.println("[FILTRADO POR TIENDA - SHOP]\n");
-				filterByOption("isTienda", 3);
-				break;
-
-			case 6:
-				System.out.println("[MOSTRANDO TODAS LAS VETERINARIAS]\n");
-				filterByOption("",6);
-				break;
+				
+			try {
+				next = false;
+				option = 0;
+				
+				System.out.println("\n[VETERINARIAS DISPONIBLES]\n");
+				
+				System.out.println("Filtrar por: ");
+				System.out.println("1) Castracion");
+				System.out.println("2) Desparacitaciï¿½n");
+				System.out.println("3) Adopciï¿½n");
+				System.out.println("4) Peluquerï¿½a");
+				System.out.println("5) Venta de Articulos");
+				System.out.println("6) Ver todas las veterinarias disponibles");
+				
+				System.out.println();
+				System.out.println("0) Volver al menu principal");
+				
+				System.out.println();
+				System.out.print("Opcion: ");
+				
+				option = input.nextInt();
+				
+				System.out.println();
+				
+				switch (option) {
+				
+					case 0:
+					break;
+				
+					case 1:
+						System.out.println("[FILTRADO POR CASTRACION]\n");
+						filterByOption("castracion", -1);
+						break;
+						
+					case 2:
+						System.out.println("[FILTRADO POR DESPARACITACIï¿½N]\n");
+						filterByOption("desparacitacion", 0);
+						break;
+						
+					case 3:
+						System.out.println("[FILTRADO POR ADOPCION]\n");
+						filterByOption("adopcion", 1);
+						break;
+						
+					case 4:
+						System.out.println("[FILTRADO POR PELUQUERIA]\n");
+						filterByOption("peluqueria", 2);
+						break;
+						
+					case 5:
+						System.out.println("[FILTRADO POR TIENDA - SHOP]\n");
+						filterByOption("isTienda", 3);
+						break;
+						
+					case 6:
+						System.out.println("[MOSTRANDO TODAS LAS VETERINARIAS]\n");
+						filterByOption("",6);
+						break;
+						
+					default: {
+						System.out.println("[!] La opcion " + option + " es inexistente, por favor vuelva a intentarlo.");
+						break;
+					}
+				
+				}
+			
+			} catch(InputMismatchException e) {
+				
+				input.next();
+				System.out.println("\n[!] Debe ingresar obligatoriamente un número entero.");
+				next = true;
 			}
-
-		} while (option >= 1 || option >= 6);
-
+					
+		} while ( (option >= 1 || option >= 6) || next == true );
+				
 	}
+			
 
 	public void filterByOption(String option, int selectionCase) {
 
