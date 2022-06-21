@@ -23,121 +23,141 @@ public class UserMenuApp implements I_Administration {
 	public void menu() {
 
 		int option = 0;
+		boolean next = false;
 
 		do {
-			
-			option = 0;
 
-			System.out.println("Bienvenido " + loggedUser.getName() + "!");
-			System.out.println("SALDO ACTUAL: $" + loggedUser.getMyWallet().getAmount() + "\n");
+			try {
 
-			System.out.println("1) Reserva un Turno");
-			System.out.println("2) Ver veterinarias"); //x
-			System.out.println("3) Agrega tu mascota"); //x
-			System.out.println("4) Poner en adopcion");
-			System.out.println("5) Ver mascotas en adopcion");
-			System.out.println("6) Ir a la tienda"); //x
-			System.out.println("7) Opciones de usuario");
-			System.out.println("8) Cargar / Ver saldo"); //x
+				next = false;
+				option = 0;
 
-			System.out.println();
-			System.out.print("Opcion: ");
-			option = input.nextInt();
+				System.out.println("Bienvenido " + loggedUser.getName() + "!");
+				System.out.println("SALDO ACTUAL: $" + loggedUser.getMyWallet().getAmount() + "\n");
 
-			switch (option) {
+				System.out.println("1) Reserva un Turno");
+				System.out.println("2) Ver veterinarias"); // x
+				System.out.println("3) Agrega tu mascota"); // x
+				System.out.println("4) Poner en adopcion");
+				System.out.println("5) Ver mascotas en adopcion");
+				System.out.println("6) Ir a la tienda"); // x
+				System.out.println("7) Opciones de usuario");
+				System.out.println("8) Cargar / Ver saldo"); // x
 
-			// Reserva un Turno
-			case 1:
-				break;
+				System.out.println();
+				System.out.print("Opcion: ");
+				option = input.nextInt();
 
-			// Ver veterinarias
-			case 2:
-								
-				menuVeterinaries();
-				break;
-				
-			// Agrega tu mascota
-			case 3:
-				addAnimal();
-				break;
+				switch (option) {
 
-			// Poner en adopcion
-			case 4:
-				break;
+				// Reserva un Turno
+				case 1:
+					break;
 
-			// Ver mascotas en adopcion
-			case 5:
-				break;
+				// Ver veterinarias
+				case 2:
 
-			// Ir a la tienda
-			case 6:
-				shop.shopMenu();
-				break;
+					menuVeterinaries();
+					break;
 
-			// Opciones de usuario
-			case 7:
-				editUser();
-				break;
+				// Agrega tu mascota
+				case 3:
+					addAnimal();
+					break;
 
-			case 8:
-				loadAndViewMoneyInMyWallet();
-				break;
+				// Poner en adopcion
+				case 4:
+					break;
 
-			default:
-				System.out.println("Error. Nï¿½mero de operaciï¿½n incorrecta, por favor vuelva a ingresar la opciï¿½n");
-				break;
+				// Ver mascotas en adopcion
+				case 5:
+					break;
+
+				// Ir a la tienda
+				case 6:
+					shop.shopMenu();
+					break;
+
+				// Opciones de usuario
+				case 7:
+					editUser();
+					break;
+
+				case 8:
+					loadAndViewMoneyInMyWallet();
+					break;
+
+				default:
+					System.out.println(
+							"Error. Nï¿½mero de operaciï¿½n incorrecta, por favor vuelva a ingresar la opciï¿½n");
+					break;
+				}
+			} catch (InputMismatchException e) {
+
+				input.next();
+				System.out.println("\n[!] Debe ingresar obligatoriamente un número entero.");
+				next = true;
 			}
 
-		} while (option >= 1 || option >= 8);
+		} while ((option >= 1 || option >= 8) || next == true);
 	}
 
 	public void addAnimal() {
 
 		int option = 0;
+		boolean next = false;
 
 		do {
+			try {
+				option=0;
+				next=false;
+				System.out.println("\n[ADMINISTRAR TUS MASCOTAS]\n");
 
-			System.out.println("\n[ADMINISTRAR TUS MASCOTAS]\n");
+				System.out.println("1) Agregar mascota");
+				System.out.println("2) Editar mascota");
+				System.out.println("3) Eliminar mascota");
+				System.out.println("4) Ver todas tus mascotas");
 
-			System.out.println("1) Agregar mascota");
-			System.out.println("2) Editar mascota");
-			System.out.println("3) Eliminar mascota");
-			System.out.println("4) Ver todas tus mascotas");
+				System.out.println();
+				System.out.println("0) Salir");
 
-			System.out.println();
-			System.out.println("0) Salir");
+				System.out.print("\nOpcion: ");
+				option = input.nextInt();
 
-			System.out.print("\nOpcion: ");
-			option = input.nextInt();
+				switch (option) {
 
-			switch (option) {
+				case 0:
+					break;
 
-			case 0:
-				break;
+				case 1:
+					System.out.println("\n[AGREGAR MASCOTA]");
+					add();
+					break;
 
-			case 1:
-				System.out.println("\n[AGREGAR MASCOTA]");
-				add();
-				break;
+				case 2:
+					System.out.println("\n[EDITAR MASCOTA]");
+					edit();
+					break;
 
-			case 2:
-				System.out.println("\n[EDITAR MASCOTA]");
-				edit();
-				break;
+				case 3:
+					System.out.println("\n[REMOVER MASCOTA]");
+					remove();
+					break;
 
-			case 3:
-				System.out.println("\n[REMOVER MASCOTA]");
-				remove();
-				break;
+				case 4:
+					System.out.println("\n[VER TODAS LAS MASCOTAS]");
+					seeAll();
+					break;
 
-			case 4:
-				System.out.println("\n[VER TODAS LAS MASCOTAS]");
-				seeAll();
-				break;
+				}
+			} catch (InputMismatchException e) {
 
+				input.next();
+				System.out.println("\n[!] Debe ingresar obligatoriamente un número entero.");
+				next = true;
 			}
 
-		} while (option >= 1 || option >= 4);
+		} while ((option >= 1 || option >= 4) || next == true);
 
 	}
 
@@ -145,15 +165,15 @@ public class UserMenuApp implements I_Administration {
 
 		int option = 0;
 		boolean next = false;
-			
+
 		do {
-				
+
 			try {
 				next = false;
 				option = 0;
-				
+
 				System.out.println("\n[VETERINARIAS DISPONIBLES]\n");
-				
+
 				System.out.println("Filtrar por: ");
 				System.out.println("1) Castracion");
 				System.out.println("2) Desparacitaciï¿½n");
@@ -161,70 +181,69 @@ public class UserMenuApp implements I_Administration {
 				System.out.println("4) Peluquerï¿½a");
 				System.out.println("5) Venta de Articulos");
 				System.out.println("6) Ver todas las veterinarias disponibles");
-				
+
 				System.out.println();
 				System.out.println("0) Volver al menu principal");
-				
+
 				System.out.println();
 				System.out.print("Opcion: ");
-				
+
 				option = input.nextInt();
-				
+
 				System.out.println();
-				
+
 				switch (option) {
-				
-					case 0:
+
+				case 0:
 					break;
-				
-					case 1:
-						System.out.println("[FILTRADO POR CASTRACION]\n");
-						filterByOption("castracion", -1);
-						break;
-						
-					case 2:
-						System.out.println("[FILTRADO POR DESPARACITACIï¿½N]\n");
-						filterByOption("desparacitacion", 0);
-						break;
-						
-					case 3:
-						System.out.println("[FILTRADO POR ADOPCION]\n");
-						filterByOption("adopcion", 1);
-						break;
-						
-					case 4:
-						System.out.println("[FILTRADO POR PELUQUERIA]\n");
-						filterByOption("peluqueria", 2);
-						break;
-						
-					case 5:
-						System.out.println("[FILTRADO POR TIENDA - SHOP]\n");
-						filterByOption("isTienda", 3);
-						break;
-						
-					case 6:
-						System.out.println("[MOSTRANDO TODAS LAS VETERINARIAS]\n");
-						filterByOption("",6);
-						break;
-						
-					default: {
-						System.out.println("[!] La opcion " + option + " es inexistente, por favor vuelva a intentarlo.");
-						break;
-					}
-				
+
+				case 1:
+					System.out.println("[FILTRADO POR CASTRACION]\n");
+					filterByOption("castracion", -1);
+					break;
+
+				case 2:
+					System.out.println("[FILTRADO POR DESPARACITACIï¿½N]\n");
+					filterByOption("desparacitacion", 0);
+					break;
+
+				case 3:
+					System.out.println("[FILTRADO POR ADOPCION]\n");
+					filterByOption("adopcion", 1);
+					break;
+
+				case 4:
+					System.out.println("[FILTRADO POR PELUQUERIA]\n");
+					filterByOption("peluqueria", 2);
+					break;
+
+				case 5:
+					System.out.println("[FILTRADO POR TIENDA - SHOP]\n");
+					filterByOption("isTienda", 3);
+					break;
+
+				case 6:
+					System.out.println("[MOSTRANDO TODAS LAS VETERINARIAS]\n");
+					filterByOption("", 6);
+					break;
+
+				default: {
+					System.out.println("[!] La opcion " + option + " es inexistente, por favor vuelva a intentarlo.");
+					break;
 				}
-			
-			} catch(InputMismatchException e) {
-				
+
+				}
+
+			} catch (InputMismatchException e) {
+
 				input.next();
 				System.out.println("\n[!] Debe ingresar obligatoriamente un número entero.");
 				next = true;
 			}
-					
-		} while ( (option >= 1 || option >= 6) || next == true );
-				
+
+		} while ((option >= 1 || option >= 6) || next == true);
+
 	}
-			
 
 	public void filterByOption(String option, int selectionCase) {
 
@@ -234,7 +253,7 @@ public class UserMenuApp implements I_Administration {
 			if (selectionCase == 6) {
 				for (int i = 0; i < array.length(); i++) {
 					JSONObject obj = array.getJSONObject(i);
-					
+
 					String nombre = obj.getString("nombre");
 					String horarios = obj.getString("horarios");
 					String direccion = obj.getString("direccion");
@@ -311,83 +330,91 @@ public class UserMenuApp implements I_Administration {
 	}
 
 	public void editUser() {
-		
-		int option = 0;
-		
-		do {
 
-			 String password;
-			 String email;
-			 String name;
-			 int age;
-			 boolean isEnabledForFostering;
-			
-			System.out.println("[EDITAR USUARIO]");
-			System.out.println("1) Ver informacion de usuario");
-			System.out.println("2) Cambiar contraseÃ±a");
-			System.out.println("3) Cambiar direccion de correo electronico");
-			System.out.println("4) Cambiar nombre");
-			System.out.println("5) Cambiar edad");
-			System.out.println("6) Cambiar disposicion a dar transito");
-			
-			System.out.println("\n0) Salir");
-			
-			System.out.println("\nOpcion: ");
-			
-			option = input.nextInt();
-			
-			switch(option) {
-			
+		int option = 0;
+		boolean next = false;
+
+		do {
+			try {
+				String password;
+				String email;
+				String name;
+				int age;
+				boolean isEnabledForFostering;
+
+				System.out.println("[EDITAR USUARIO]");
+				System.out.println("1) Ver informacion de usuario");
+				System.out.println("2) Cambiar contraseÃ±a");
+				System.out.println("3) Cambiar direccion de correo electronico");
+				System.out.println("4) Cambiar nombre");
+				System.out.println("5) Cambiar edad");
+				System.out.println("6) Cambiar disposicion a dar transito");
+
+				System.out.println("\n0) Salir");
+
+				System.out.println("\nOpcion: ");
+
+				option = input.nextInt();
+
+				switch (option) {
+
 				case 1:
 					System.out.println(loggedUser.toString());
 					break;
-			
-				case 2: 
+
+				case 2:
 					System.out.print("Ingrese su nueva contraseÃ±a: ");
 					password = input.nextLine();
 					loggedUser.setPassword(password);
 					System.out.println("La contraseÃ±a ha sido modificada exitosamente !");
 					break;
-				
+
 				case 3:
 					System.out.print("Ingrese su nueva direccion de correo electronico: ");
 					email = input.nextLine();
 					loggedUser.setEmail(email);
 					System.out.println("La direccion de correo electronico ha sido modificada exitosamente !");
 					break;
-					
+
 				case 4:
 					System.out.print("Ingrese su nuevo nombre: ");
 					name = input.nextLine();
 					loggedUser.setName(name);
 					System.out.println("La direccion de correo electronico ha sido modificada exitosamente !");
 					break;
-				
+
 				case 5:
 					System.out.print("Ingrese su nueva edad: ");
 					age = input.nextInt();
 					loggedUser.setAge(age);
 					System.out.println("La direccion de correo electronico ha sido modificada exitosamente !");
 					break;
-					
+
 				case 6:
-					System.out.println("Actualmente su disposicion a dar transito es: " + loggedUser.isEnabledForFostering());
+					System.out.println(
+							"Actualmente su disposicion a dar transito es: " + loggedUser.isEnabledForFostering());
 					System.out.println("Desea modificarlo? 1- Si | 2- No");
 					System.out.print("Opcion: ");
-					
+
 					isEnabledForFostering = (loggedUser.isEnabledForFostering() == true) ? false : true;
-					
+
 					loggedUser.setEnabledForFostering(isEnabledForFostering);
 					System.out.println("La disposicion a dar transido ha sido modificada exitosamente !");
 					break;
+				}
+
+				System.out.println();
+			} catch (InputMismatchException e) {
+
+				input.next();
+				System.out.println("\n[!] Debe ingresar obligatoriamente un número entero.");
+				next = true;
 			}
-			
-			System.out.println();
-			
-		}while(option >= 1 || option >= 6);
-		
+
+		} while ((option >= 1 || option >= 6)|| next==true);
+
 	}
-	
+
 	@Override
 	public void add() {
 
@@ -490,14 +517,14 @@ public class UserMenuApp implements I_Administration {
 	@Override
 	public void remove() {
 		String name;
-		int index=0;
+		int index = 0;
 		System.out.print("Ingrese el nombre de la mascota que quiere eliminar: ");
 		input.nextLine();
-		name=input.nextLine();
-		
+		name = input.nextLine();
+
 		for (int i = 0; i < loggedUser.getAnimals().size(); i++) {
-			if(loggedUser.getAnimals().get(i).getName().equals(name)) {
-				index=i;
+			if (loggedUser.getAnimals().get(i).getName().equals(name)) {
+				index = i;
 			}
 		}
 		loggedUser.removeAnimal(index);
@@ -508,8 +535,8 @@ public class UserMenuApp implements I_Administration {
 		String name;
 		int index;
 		Animal aux = null;
-		boolean find=false;
-		
+		boolean find = false;
+
 		String newName = "";
 
 		int optionSpecie = 0;
@@ -525,19 +552,19 @@ public class UserMenuApp implements I_Administration {
 		String breed = "";
 
 		boolean isCastrate = false;
-		
+
 		int optionisCastrate = 0;
-		
+
 		System.out.print("Ingrese el nombre de la mascota que quiere editar: ");
 		input.nextLine();
-		name=input.nextLine();
-		
+		name = input.nextLine();
+
 		for (int i = 0; i < loggedUser.getAnimals().size(); i++) {
-			if(loggedUser.getAnimals().get(i).getName().equals(name)) {
-				index=i;
-				aux=loggedUser.getAnimals().get(index);
-				find=true;
-				
+			if (loggedUser.getAnimals().get(i).getName().equals(name)) {
+				index = i;
+				aux = loggedUser.getAnimals().get(index);
+				find = true;
+
 				// Nombre mascota
 				System.out.println();
 				System.out.print("Ingrese el nombre de su mascota: ");
@@ -595,19 +622,19 @@ public class UserMenuApp implements I_Administration {
 					isCastrate = false;
 				}
 
-					aux.setName(newName);
-					aux.setGender(gender);
-					aux.setHealthStatus(healthStatus);
-					aux.setAge(age);
-					aux.setBreed(breed);
-					aux.setCastrate(isCastrate);
-					
-					System.out.println(aux.getName() + " ha sido modificado con exito !");
+				aux.setName(newName);
+				aux.setGender(gender);
+				aux.setHealthStatus(healthStatus);
+				aux.setAge(age);
+				aux.setBreed(breed);
+				aux.setCastrate(isCastrate);
+
+				System.out.println(aux.getName() + " ha sido modificado con exito !");
 			}
 		}
-		
-		if(find==false) {
-			System.out.println("La mascota con el nombre "+ name + " no existe.");
+
+		if (find == false) {
+			System.out.println("La mascota con el nombre " + name + " no existe.");
 		}
 	}
 
