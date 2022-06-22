@@ -9,22 +9,10 @@ public class Main {
 	public static void main(String[] args) {
 		
 		//Cargar hashMap con usuarios antes de inicializar la PetApp
+		MainMenuApp petApp = new MainMenuApp();
+			
+		petApp.menu();
 		
-		//MainMenuApp petApp = new MainMenuApp();
-		//petApp.menu();
-		
-//		String fuente = JSONUtilities.leer("veterinarias");
-//		
-//		System.out.println(fuente);
-//		
-//		try {
-//			JSONArray obj = new JSONArray(fuente);
-//		} catch (JSONException e) {
-//			
-//			e.printStackTrace();
-//		}	
-		
-
 		//Wallete de Garfield
 		Wallet aWallet = new Wallet();
 		aWallet.addCash(5000);

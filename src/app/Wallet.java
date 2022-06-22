@@ -1,6 +1,8 @@
 package app;
 
-public class Wallet {
+import java.io.*;
+
+public class Wallet implements Serializable {
 	
 	private double amount;
 

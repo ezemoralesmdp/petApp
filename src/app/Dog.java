@@ -2,7 +2,7 @@ package app;
 
 import java.util.ArrayList;
 
-public class Dog extends Animal {
+public class Dog extends Animal  {
 	
 	//Atributes
 	private ArrayList<String> vaccines; //Ver que tipo de coleccion usar
