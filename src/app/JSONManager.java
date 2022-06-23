@@ -9,6 +9,72 @@ import org.json.JSONObject;
 public class JSONManager {
 		
 	
+	public static void createJSON(User aux) {
+		
+		
+		
+	}
+	
+	
+	public static void newUser() {
+		
+	}
+	
+	
+	
+	public ArrayList<User> JSONtoUsersArray() {
+		
+		String source=JSONUtiles.leer("users.json");
+		
+		ArrayList <User> arrayUsers=new ArrayList<>();
+		
+		try {
+			JSONArray jsonArrayUsers=new JSONArray(source);
+			for (int i = 0; i < jsonArrayUsers.length(); i++) {
+				User auxUser=new User();
+				JSONObject jsonUser=jsonArrayUsers.getJSONObject(i);
+				auxUser.setUser(jsonUser.getString("user"));
+				auxUser.setPassword(jsonUser.getString("password"));
+				auxUser.setEmail(jsonUser.getString("email"));
+				auxUser.setName(jsonUser.getString("name"));
+				auxUser.setAge(jsonUser.getInt("age"));
+				
+				JSONArray jsonArrayAnimals=jsonUser.getJSONArray("animals");
+				ArrayList<Animal> arrayAnimals=new ArrayList<>();
+				
+				for (int j = 0; j < jsonArrayAnimals.length(); j++) {
+					JSONObject jsonAnimal=jsonArrayAnimals.getJSONObject(j);
+					Animal auxAnimal=new Animal();
+					for (int k = 0; k < jsonArrayAnimals.length(); k++) {
+						auxAnimal.setName(jsonAnimal.getString("name"));
+						auxAnimal.setSpecie(jsonAnimal.getString("specie"));
+						auxAnimal.setGender(jsonAnimal.getString("gender"));
+						auxAnimal.setHealthStatus(jsonAnimal.getString("healthStatus"));
+						auxAnimal.setAge(jsonAnimal.getInt("age"));
+					}
+				}
+				
+			}
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		
+		return arrayUsers;
+	}
+	
+	
+	public void userArrayToJSONFile() {
+		
+		
+		
+	}
+	
+	
 	
 	public static ArrayList<Veterinary> readJson() {
 		

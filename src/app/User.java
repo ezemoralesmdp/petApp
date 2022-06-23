@@ -2,6 +2,7 @@ package app;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class User implements Serializable {
 	
@@ -12,9 +13,9 @@ public class User implements Serializable {
 	private String name;
 	private int age;
 	private ArrayList <Animal> animals;
+	private ArrayList <Appointment> listOfAssignedAppointments;
 	private boolean isEnabledForFostering;
 	private Wallet myWallet;
-	ArrayList<Appointment> listOfAssignedAppointments;
 	
 	//Constructor
 	
@@ -123,11 +124,28 @@ public class User implements Serializable {
 	}
 	
 	public void showListOfAnimals()
-	{
-		for(int i=0;i<animals.size();i++)
-		{
-			System.out.println(animals.toString());
-		}
+    {
+        for(int i=0;i<animals.size();i++)
+        {
+            System.out.println(animals.toString());
+        }
+    }
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(user);
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!(obj instanceof User))
+			return false;
+		User other = (User) obj;
+		return Objects.equals(user, other.user);
+	}
+	
+	
 	
 }

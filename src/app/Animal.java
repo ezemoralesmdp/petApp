@@ -2,7 +2,7 @@ package app;
 
 import java.io.Serializable;
 
-public abstract class Animal implements Serializable {
+public class Animal implements Serializable {
 
 	//Atributes
 	private String name;
