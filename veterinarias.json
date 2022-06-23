@@ -5,13 +5,13 @@
     "direccion": "Monte y Amancay",
     "barrio": "Mataderos",
     "descripcion": "Especializacion: castración y desparacitación de perros. Tienda.",
-    "servicios": [
-	    { "castracion": true },
-	    { "desparacitacion": true },
-	    { "adopcion": false },
-	    { "peluqueria": true },
-	    { "isTienda": true }
-    ]
+    "servicios": {
+	    "castracion": true,
+	    "desparacitacion": false,
+	    "adopcion": false,
+	    "peluqueria": true,
+	    "isTienda": false
+    }
   },
   {
     "nombre": "Paprika",
@@ -19,13 +19,13 @@
     "direccion": "Pavon y Virrey Cevallos",
     "barrio": "Constitución",
     "descripcion": "Especializacion: castración y desparacitación de gatos. Adopción disponible",
-    "servicios": [
-	    { "castracion": true },
-	    { "desparacitacion": false },
-	    { "adopcion": false },
-	    { "peluqueria": true },
-	    { "isTienda": false }
-    ]
+    "servicios": {
+	    "castracion": false,
+	    "desparacitacion": false,
+	    "adopcion": false,
+	    "peluqueria": true,
+	    "isTienda": false
+    }
   },
   {
     "nombre": "Veterinaria Wendy",
@@ -33,13 +33,13 @@
     "direccion": "La Rioja y Cochabamba",
     "barrio": "San Cristobal",
     "descripcion": "Especializacion: castración y desparacitación de perros y gatos. Tienda.",
-    "servicios": [
-	    { "castracion": true },
-	    { "desparacitacion": true },
-	    { "adopcion": false },
-	    { "peluqueria": false },
-	    { "isTienda": true }
-    ]
+    "servicios": {
+	    "castracion": true,
+	    "desparacitacion": false,
+	    "adopcion": false,
+	    "peluqueria": true,
+	    "isTienda": false
+    }
   },
   {
     "nombre": "Ringo",
@@ -47,13 +47,13 @@
     "direccion": "Fco. Bilbao y Lacarra",
     "barrio": "Parque Avellaneda",
     "descripcion": "Especializacion: peluquería canina. Tienda.",
-    "servicios": [
-	    { "castracion": false },
-	    { "desparacitacion": true },
-	    { "adopcion": true },
-	    { "peluqueria": true },
-	    { "isTienda": true }
-    ]
+    "servicios": {
+	    "castracion": true,
+	    "desparacitacion": false,
+	    "adopcion": false,
+	    "peluqueria": true,
+	    "isTienda": false
+    }
   },
   {
     "nombre": "Walrus",
@@ -61,12 +61,12 @@
     "direccion": "Cuenca 2500",
     "barrio": "Villa del Parque",
     "descripcion": "Especializacion: castración y desparacitación de perros y gatos. Peluquería animal. Adopción disponible. Tienda.",
-    "servicios": [
-	    { "castracion": true },
-	    { "desparacitacion": true },
-	    { "adopcion": true },
-	    { "peluqueria": true },
-	    { "isTienda": true }
-    ]
+    "servicios": {
+	    "castracion": true,
+	    "desparacitacion": false,
+	    "adopcion": false,
+	    "peluqueria": true,
+	    "isTienda": false
+    }
   }
 ]

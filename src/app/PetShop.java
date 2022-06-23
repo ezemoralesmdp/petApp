@@ -5,11 +5,6 @@ import java.util.Scanner;
 
 public class PetShop {
 
-	// Clase generica Stock que puede almacenar Juguetes, Ropa o Comida
-	// Clase juguete, Clase ropa, Clase comida
-	// Internamente tendria Objetos de tipo Producto
-	// Producto tendria internamente un String y un Double
-
 	Scanner input = new Scanner(System.in);
 
 	private Stock<Toy> stockToys;
@@ -133,12 +128,14 @@ public class PetShop {
 					System.out.println("Error. Número de operación incorrecta, por favor vuelva a ingresar la opción");
 					break;
 				}
+				
 			} catch (InputMismatchException e) {
 
 				input.next();
 				System.out.println("\n[!] Debe ingresar obligatoriamente un número entero.");
 				next = true;
 			}
+			
 		} while ((option >= 1 || option >= 3) || next == true);
 	}
 
@@ -146,14 +143,13 @@ public class PetShop {
 
 		boolean next = false;
 		int option = 0;
-		int newStockQuantity = 0;
-		boolean notEnoughFounds;
 
 		do {
+			
 			try {
+				
 				option = 0;
 				next = false;
-				int confirmPurchase = 0;
 
 				System.out.println("\nStock actual de Juguetes: " + stockToys.getQuantity());
 				System.out.println("Stock actual de Ropa: " + stockClothes.getQuantity());
@@ -169,115 +165,34 @@ public class PetShop {
 
 				switch (option) {
 
+				case 0:
+					break;
+				
 				case 1:
-
-					System.out.println(toy1.toString());
-
-					System.out.println("[?] ¿Desea confirmar la compra?\n 1- Si | 2- No\n");
-
-					System.out.print("Opcion: ");
-					confirmPurchase = input.nextInt();
-
-					// Repetir operacion en todos los case PENDIENTE
-
-					if (confirmPurchase == 1) {
-						if (loggedUser.getMyWallet().getAmount() > toy1.getPrice()) {
-							loggedUser.getMyWallet().subtractionCash(toy1.getPrice());
-							newStockQuantity = stockToys.removeProductPerPurchase(toy1);
-						} else {
-							System.out.println("No dispone de suficiente saldo para realizar la operacion.");
-							System.out
-									.println("Te faltan: $" + (toy1.getPrice() - loggedUser.getMyWallet().getAmount()));
-							confirmPurchase = 0;
-						}
-					}
-
-					System.out.println();
-
+					purchaseOperationToy(toy1);
 					break;
 
 				case 2:
-
-					System.out.println(toy2.toString());
-
-					System.out.println("[?] ¿Desea confirmar la compra?\n 1- Si | 2- No\n");
-
-					System.out.print("Opcion: ");
-					confirmPurchase = input.nextInt();
-
-					if (confirmPurchase == 1) {
-						loggedUser.getMyWallet().subtractionCash(toy2.getPrice());
-						newStockQuantity = stockToys.removeProductPerPurchase(toy2);
-					}
-
-					System.out.println();
-
+					purchaseOperationToy(toy2);
 					break;
 
 				case 3:
-
-					System.out.println(toy3.toString());
-
-					System.out.println("[?] ¿Desea confirmar la compra?\n 1- Si | 2- No\n");
-
-					System.out.print("Opcion: ");
-					confirmPurchase = input.nextInt();
-
-					if (confirmPurchase == 1) {
-						loggedUser.getMyWallet().subtractionCash(toy3.getPrice());
-						newStockQuantity = stockToys.removeProductPerPurchase(toy3);
-					}
-
-					System.out.println();
-
+					purchaseOperationToy(toy3);
 					break;
 
 				case 4:
-
-					System.out.println(toy4.toString());
-
-					System.out.println("[?] ¿Desea confirmar la compra?\n 1- Si | 2- No\n");
-
-					System.out.print("Opcion: ");
-					confirmPurchase = input.nextInt();
-
-					if (confirmPurchase == 1) {
-						loggedUser.getMyWallet().subtractionCash(toy4.getPrice());
-						newStockQuantity = stockToys.removeProductPerPurchase(toy4);
-					}
-
-					System.out.println();
-
+					purchaseOperationToy(toy4);
 					break;
 
 				case 5:
-
-					System.out.println(toy5.toString());
-
-					System.out.println("[?] ¿Desea confirmar la compra?\n 1- Si | 2- No\n");
-
-					System.out.print("Opcion: ");
-					confirmPurchase = input.nextInt();
-
-					if (confirmPurchase == 1) {
-						loggedUser.getMyWallet().subtractionCash(toy5.getPrice());
-						newStockQuantity = stockToys.removeProductPerPurchase(toy5);
-					}
-
-					System.out.println();
-
+					purchaseOperationToy(toy5);
 					break;
 
 				default:
 					System.out.println("Error. Número de operación incorrecta, por favor vuelva a ingresar la opción");
 					break;
 				}
-
-				if (confirmPurchase == 1) {
-
-					System.out.println("[!] Compra confirmada");
-					System.out.println("Su saldo actual es de: $" + loggedUser.getMyWallet().getAmount());
-				}
+				
 			} catch (InputMismatchException e) {
 
 				input.next();
@@ -286,21 +201,17 @@ public class PetShop {
 			}
 
 		} while ((option >= 1 || option >= 5) || next == true);
-
 	}
 
 	public void shopMenu_clothes() {
 
 		int option = 0;
 		boolean next = false;
-		int newStockQuantity = 0;
 
 		do {
-
 			try {
 				option = 0;
 				next = false;
-				int confirmPurchase = 0;
 
 				System.out.println("\nStock actual de Ropa: " + stockClothes.getQuantity());
 				System.out.println("Stock actual de Juguetes: " + stockToys.getQuantity());
@@ -316,88 +227,30 @@ public class PetShop {
 
 				switch (option) {
 
+				case 0:
+					break;
+				
 				case 1:
-
-					System.out.println(clothe1.toString());
-
-					System.out.println("[?] ¿Desea confirmar la compra?\n 1- Si | 2- No\n");
-
-					System.out.print("Opcion: ");
-					confirmPurchase = input.nextInt();
-
-					if (confirmPurchase == 1) {
-						loggedUser.getMyWallet().subtractionCash(clothe1.getPrice());
-						newStockQuantity = stockClothes.removeProductPerPurchase(clothe1);
-					}
-
-					System.out.println();
-
+					purchaseOperationClothe(clothe1);
 					break;
 
 				case 2:
-
-					System.out.println(clothe2.toString());
-
-					System.out.println("[?] ¿Desea confirmar la compra?\n 1- Si | 2- No\n");
-
-					System.out.print("Opcion: ");
-					confirmPurchase = input.nextInt();
-
-					if (confirmPurchase == 1) {
-						loggedUser.getMyWallet().subtractionCash(clothe2.getPrice());
-						newStockQuantity = stockClothes.removeProductPerPurchase(clothe2);
-					}
-
-					System.out.println();
-
+					purchaseOperationClothe(clothe2);
 					break;
 
 				case 3:
-
-					System.out.println(clothe3.toString());
-
-					System.out.println("[?] ¿Desea confirmar la compra?\n 1- Si | 2- No\n");
-
-					System.out.print("Opcion: ");
-					confirmPurchase = input.nextInt();
-
-					if (confirmPurchase == 1) {
-						loggedUser.getMyWallet().subtractionCash(clothe3.getPrice());
-						newStockQuantity = stockClothes.removeProductPerPurchase(clothe3);
-					}
-
-					System.out.println();
-
+					purchaseOperationClothe(clothe3);
 					break;
 
 				case 4:
-
-					System.out.println(clothe4.toString());
-
-					System.out.println("[?] ¿Desea confirmar la compra?\n 1- Si | 2- No\n");
-
-					System.out.print("Opcion: ");
-					confirmPurchase = input.nextInt();
-
-					if (confirmPurchase == 1) {
-						loggedUser.getMyWallet().subtractionCash(clothe4.getPrice());
-						newStockQuantity = stockClothes.removeProductPerPurchase(clothe4);
-					}
-
-					System.out.println();
-
+					purchaseOperationClothe(clothe4);
 					break;
 
 				default:
 					System.out.println("Error. Número de operación incorrecta, por favor vuelva a ingresar la opción");
 					break;
 				}
-
-				if (confirmPurchase == 1) {
-
-					System.out.println("[!] Compra confirmada");
-					System.out.println("Su saldo actual es de: $" + loggedUser.getMyWallet().getAmount());
-				}
+				
 			} catch (InputMismatchException e) {
 
 				input.next();
@@ -413,13 +266,11 @@ public class PetShop {
 
 		int option = 0;
 		boolean next = false;
-		int newStockQuantity = 0;
-
+		
 		do {
 			try {
 				option = 0;
 				next = false;
-				int confirmPurchase = 0;
 
 				System.out.println("\nStock actual de Alimentos: " + stockFoods.getQuantity());
 				System.out.println("Stock actual de Juguetes: " + stockToys.getQuantity());
@@ -435,184 +286,47 @@ public class PetShop {
 
 				switch (option) {
 
+				case 0:
+					break;
+				
 				case 1:
-
-					System.out.println(food1.toString());
-
-					System.out.println("[?] ¿Desea confirmar la compra?\n 1- Si | 2- No\n");
-
-					System.out.print("Opcion: ");
-					confirmPurchase = input.nextInt();
-
-					if (confirmPurchase == 1) {
-						loggedUser.getMyWallet().subtractionCash(food1.getPrice());
-						newStockQuantity = stockFoods.removeProductPerPurchase(food1);
-					}
-
-					System.out.println();
-
+					purchaseOperationFood(food1);
 					break;
 
 				case 2:
-
-					System.out.println(food2.toString());
-
-					System.out.println("[?] ¿Desea confirmar la compra?\n 1- Si | 2- No\n");
-
-					System.out.print("Opcion: ");
-					confirmPurchase = input.nextInt();
-
-					if (confirmPurchase == 1) {
-						loggedUser.getMyWallet().subtractionCash(food2.getPrice());
-						newStockQuantity = stockFoods.removeProductPerPurchase(food2);
-					}
-
-					System.out.println();
-
+					purchaseOperationFood(food2);
 					break;
 
 				case 3:
-
-					System.out.println(food3.toString());
-
-					System.out.println("[?] ¿Desea confirmar la compra?\n 1- Si | 2- No\n");
-
-					System.out.print("Opcion: ");
-					confirmPurchase = input.nextInt();
-
-					if (confirmPurchase == 1) {
-						loggedUser.getMyWallet().subtractionCash(food3.getPrice());
-						newStockQuantity = stockFoods.removeProductPerPurchase(food3);
-					}
-
-					System.out.println();
-
+					purchaseOperationFood(food3);
 					break;
 
 				case 4:
-
-					System.out.println(food4.toString());
-
-					System.out.println("[?] ¿Desea confirmar la compra?\n 1- Si | 2- No\n");
-
-					System.out.print("Opcion: ");
-					confirmPurchase = input.nextInt();
-
-					if (confirmPurchase == 1) {
-						loggedUser.getMyWallet().subtractionCash(food4.getPrice());
-						newStockQuantity = stockFoods.removeProductPerPurchase(food4);
-					}
-
-					System.out.println();
-
+					purchaseOperationFood(food4);
 					break;
 
 				case 5:
-
-					System.out.println(food5.toString());
-
-					System.out.println("[?] ¿Desea confirmar la compra?\n 1- Si | 2- No\n");
-
-					System.out.print("Opcion: ");
-					confirmPurchase = input.nextInt();
-
-					if (confirmPurchase == 1) {
-						loggedUser.getMyWallet().subtractionCash(food5.getPrice());
-						newStockQuantity = stockFoods.removeProductPerPurchase(food5);
-					}
-
-					System.out.println();
-
+					purchaseOperationFood(food5);
 					break;
 
 				case 6:
-
-					System.out.println(food6.toString());
-
-					System.out.println("[?] ¿Desea confirmar la compra?\n 1- Si | 2- No\n");
-
-					System.out.print("Opcion: ");
-					confirmPurchase = input.nextInt();
-
-					if (confirmPurchase == 1) {
-						loggedUser.getMyWallet().subtractionCash(food6.getPrice());
-						newStockQuantity = stockFoods.removeProductPerPurchase(food6);
-					}
-
-					System.out.println();
-
+					purchaseOperationFood(food6);
 					break;
 
 				case 7:
-
-					System.out.println(food7.toString());
-
-					System.out.println("[?] ¿Desea confirmar la compra?\n 1- Si | 2- No\n");
-
-					System.out.print("Opcion: ");
-					confirmPurchase = input.nextInt();
-
-					if (confirmPurchase == 1) {
-						loggedUser.getMyWallet().subtractionCash(food7.getPrice());
-						newStockQuantity = stockFoods.removeProductPerPurchase(food7);
-					}
-
-					System.out.println();
-
+					purchaseOperationFood(food7);
 					break;
 
 				case 8:
-
-					System.out.println(food8.toString());
-
-					System.out.println("[?] ¿Desea confirmar la compra?\n 1- Si | 2- No\n");
-
-					System.out.print("Opcion: ");
-					confirmPurchase = input.nextInt();
-
-					if (confirmPurchase == 1) {
-						loggedUser.getMyWallet().subtractionCash(food8.getPrice());
-						newStockQuantity = stockFoods.removeProductPerPurchase(food8);
-					}
-
-					System.out.println();
-
+					purchaseOperationFood(food8);
 					break;
 
 				case 9:
-
-					System.out.println(food9.toString());
-
-					System.out.println("[?] ¿Desea confirmar la compra?\n 1- Si | 2- No\n");
-
-					System.out.print("Opcion: ");
-					confirmPurchase = input.nextInt();
-
-					if (confirmPurchase == 1) {
-						loggedUser.getMyWallet().subtractionCash(food9.getPrice());
-						newStockQuantity = stockFoods.removeProductPerPurchase(food9);
-					}
-
-					System.out.println();
-
+					purchaseOperationFood(food9);
 					break;
 
 				case 10:
-
-					System.out.println(food10.toString());
-
-					System.out.println("[?] ¿Desea confirmar la compra?\n 1- Si | 2- No\n");
-
-					System.out.print("Opcion: ");
-					confirmPurchase = input.nextInt();
-
-					if (confirmPurchase == 1) {
-						loggedUser.getMyWallet().subtractionCash(food10.getPrice());
-						newStockQuantity = stockFoods.removeProductPerPurchase(food10);
-					}
-
-					System.out.println();
-
+					purchaseOperationFood(food10);
 					break;
 
 				default:
@@ -620,11 +334,6 @@ public class PetShop {
 					break;
 				}
 
-				if (confirmPurchase == 1) {
-
-					System.out.println("[!] Compra confirmada");
-					System.out.println("Su saldo actual es de: $" + loggedUser.getMyWallet().getAmount());
-				}
 			} catch (InputMismatchException e) {
 
 				input.next();
@@ -633,15 +342,89 @@ public class PetShop {
 			}
 
 		} while ((option >= 1 || option >= 10) || next == true);
-
 	}
 
-//	public <E> void purchaseOperation(Double productPrice,E product) {
-//		int newStockQuantity = 0;
-//		if(loggedUser.getMyWallet().getAmount()-productPrice>0) {
-//			loggedUser.getMyWallet().subtractionCash(productPrice);
-//			newStockQuantity = stockFoods.removeProductPerPurchase(product);
-//		}
-//	}
+	public void purchaseOperationToy(Toy product) {
+		
+		int confirmPurchase = 0;
+		
+		System.out.println(product.toString());
 
+		System.out.println("[?] ¿Desea confirmar la compra?\n 1- Si | 2- No\n");
+
+		System.out.print("Opcion: ");
+		confirmPurchase = input.nextInt();
+		
+		if(confirmPurchase == 1) {
+		
+			if (loggedUser.getMyWallet().getAmount() > product.getPrice()) {
+				loggedUser.getMyWallet().subtractionCash(product.getPrice());
+				stockToys.removeProductPerPurchase(product);
+	
+				System.out.println("[!] Compra confirmada");
+				System.out.println("Su saldo actual es de: $" + loggedUser.getMyWallet().getAmount());
+				
+			} else {
+				System.out.println("No dispone de suficiente saldo para realizar la operacion.");
+				System.out
+						.println("Te faltan: $" + (product.getPrice() - loggedUser.getMyWallet().getAmount()));
+			}
+		}
+	}
+	
+	public void purchaseOperationClothe(Clothe product) {
+		
+		int confirmPurchase = 0;
+		
+		System.out.println(product.toString());
+
+		System.out.println("[?] ¿Desea confirmar la compra?\n 1- Si | 2- No\n");
+
+		System.out.print("Opcion: ");
+		confirmPurchase = input.nextInt();
+		
+		if(confirmPurchase == 1) {
+			
+			if (loggedUser.getMyWallet().getAmount() > product.getPrice()) {
+				loggedUser.getMyWallet().subtractionCash(product.getPrice());
+				stockClothes.removeProductPerPurchase(product);
+				
+				System.out.println("[!] Compra confirmada");
+				System.out.println("Su saldo actual es de: $" + loggedUser.getMyWallet().getAmount());
+				
+			} else {
+				System.out.println("No dispone de suficiente saldo para realizar la operacion.");
+				System.out
+				.println("Te faltan: $" + (product.getPrice() - loggedUser.getMyWallet().getAmount()));
+			}
+		}
+	}
+	
+	public void purchaseOperationFood(Food product) {
+		
+		int confirmPurchase = 0;
+		
+		System.out.println(product.toString());
+
+		System.out.println("[?] ¿Desea confirmar la compra?\n 1- Si | 2- No\n");
+
+		System.out.print("Opcion: ");
+		confirmPurchase = input.nextInt();
+		
+		if(confirmPurchase == 1) {
+			
+			if (loggedUser.getMyWallet().getAmount() > product.getPrice()) {
+				loggedUser.getMyWallet().subtractionCash(product.getPrice());
+				stockFoods.removeProductPerPurchase(product);
+				
+				System.out.println("[!] Compra confirmada");
+				System.out.println("Su saldo actual es de: $" + loggedUser.getMyWallet().getAmount());
+				
+			} else {
+				System.out.println("No dispone de suficiente saldo para realizar la operacion.");
+				System.out
+				.println("Te faltan: $" + (product.getPrice() - loggedUser.getMyWallet().getAmount()));
+			}
+		}
+	}
 }

@@ -116,7 +116,7 @@ public class User implements Serializable {
 			  "Nombre: " + name + "\n" + 
 			  "Correo electronico: " + email + "\n" +
 			  "Edad: " + age + "\n" + 
-			  "Transito: " + isEnabledForFostering + "\n";
+			  "Transito: " + isEnabledForFostering;
 		
 		return aux;
 	}

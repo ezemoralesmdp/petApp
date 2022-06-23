@@ -1,18 +1,13 @@
 package app;
 
-import java.nio.file.ReadOnlyFileSystemException;
 import java.util.*;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class UserMenuApp implements I_Administration {
 
 	Scanner input = new Scanner(System.in);
-	String source = JSONUtiles.leer("veterinarias");
 	PetShop shop;
 	User loggedUser;
+	ArrayList<Veterinary> veterinaries = JSONManager.readJson();
 
 	// Constructor
 	public UserMenuApp(User loggedUser, PetShop aPetShop) {
@@ -24,7 +19,7 @@ public class UserMenuApp implements I_Administration {
 
 		int option = 0;
 		boolean next = false;
-
+		
 		do {
 
 			try {
@@ -32,16 +27,16 @@ public class UserMenuApp implements I_Administration {
 				next = false;
 				option = 0;
 
-				System.out.println("Bienvenido " + loggedUser.getName() + "!");
+				System.out.println("\nBienvenido " + loggedUser.getName() + "!");
 				System.out.println("SALDO ACTUAL: $" + loggedUser.getMyWallet().getAmount() + "\n");
 
-				System.out.println("1) Reserva un Turno");
+				System.out.println("1) Reserva un Turno"); // --
 				System.out.println("2) Ver veterinarias"); // x
-				System.out.println("3) Agrega tu mascota"); // x
-				System.out.println("4) Poner en adopcion");
-				System.out.println("5) Ver mascotas en adopcion");
-				System.out.println("6) Ir a la tienda"); // x
-				System.out.println("7) Opciones de usuario");
+				System.out.println("3) Agrega tu mascota"); // x -- Chequear lo que dijo benoffi
+				System.out.println("4) Poner en adopcion"); // --
+				System.out.println("5) Ver mascotas en adopcion"); // --
+				System.out.println("6) Ir a la tienda"); // x Ver mensajes que se invierten
+				System.out.println("7) Opciones de usuario"); // x
 				System.out.println("8) Cargar / Ver saldo"); // x
 
 				System.out.println();
@@ -52,11 +47,11 @@ public class UserMenuApp implements I_Administration {
 
 				// Reserva un Turno
 				case 1:
+					assignAppointment();
 					break;
 
 				// Ver veterinarias
 				case 2:
-
 					menuVeterinaries();
 					break;
 
@@ -88,10 +83,10 @@ public class UserMenuApp implements I_Administration {
 					break;
 
 				default:
-					System.out.println(
-							"Error. Nï¿½mero de operaciï¿½n incorrecta, por favor vuelva a ingresar la opciï¿½n");
+					System.out.println("Error. Numero de operacion incorrecta, por favor vuelva a ingresar la opcion");
 					break;
 				}
+				
 			} catch (InputMismatchException e) {
 
 				input.next();
@@ -100,6 +95,17 @@ public class UserMenuApp implements I_Administration {
 			}
 
 		} while ((option >= 1 || option >= 8) || next == true);
+	}
+	
+	public void assignAppointment() {
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 	public void addAnimal() {
@@ -148,6 +154,10 @@ public class UserMenuApp implements I_Administration {
 					System.out.println("\n[VER TODAS LAS MASCOTAS]");
 					seeAll();
 					break;
+					
+				default:
+					System.out.println("\n[!] Error. Número de operación incorrecta, por favor vuelva a ingresar la opción");
+					break;
 
 				}
 			} catch (InputMismatchException e) {
@@ -176,9 +186,9 @@ public class UserMenuApp implements I_Administration {
 
 				System.out.println("Filtrar por: ");
 				System.out.println("1) Castracion");
-				System.out.println("2) Desparacitaciï¿½n");
-				System.out.println("3) Adopciï¿½n");
-				System.out.println("4) Peluquerï¿½a");
+				System.out.println("2) Desparacitacion");
+				System.out.println("3) Adopcion");
+				System.out.println("4) Peluqueria");
 				System.out.println("5) Venta de Articulos");
 				System.out.println("6) Ver todas las veterinarias disponibles");
 
@@ -199,32 +209,32 @@ public class UserMenuApp implements I_Administration {
 
 				case 1:
 					System.out.println("[FILTRADO POR CASTRACION]\n");
-					filterByOption("castracion", -1);
+					filterByOption(1);
 					break;
 
 				case 2:
 					System.out.println("[FILTRADO POR DESPARACITACIï¿½N]\n");
-					filterByOption("desparacitacion", 0);
+					filterByOption(2);
 					break;
 
 				case 3:
 					System.out.println("[FILTRADO POR ADOPCION]\n");
-					filterByOption("adopcion", 1);
+					filterByOption(3);
 					break;
 
 				case 4:
 					System.out.println("[FILTRADO POR PELUQUERIA]\n");
-					filterByOption("peluqueria", 2);
+					filterByOption(4);
 					break;
 
 				case 5:
 					System.out.println("[FILTRADO POR TIENDA - SHOP]\n");
-					filterByOption("isTienda", 3);
+					filterByOption(5);
 					break;
 
 				case 6:
 					System.out.println("[MOSTRANDO TODAS LAS VETERINARIAS]\n");
-					filterByOption("", 6);
+					filterByOption(6);
 					break;
 
 				default: {
@@ -245,58 +255,42 @@ public class UserMenuApp implements I_Administration {
 
 	}
 
-	public void filterByOption(String option, int selectionCase) {
+	public void filterByOption(int selectionCase) {
 
-		try {
-
-			JSONArray array = new JSONArray(source);
-			if (selectionCase == 6) {
-				for (int i = 0; i < array.length(); i++) {
-					JSONObject obj = array.getJSONObject(i);
-
-					String nombre = obj.getString("nombre");
-					String horarios = obj.getString("horarios");
-					String direccion = obj.getString("direccion");
-					String barrio = obj.getString("barrio");
-					String descripcion = obj.getString("descripcion");
-
-					System.out.println(nombre);
-					System.out.println(horarios);
-					System.out.println(direccion);
-					System.out.println(barrio);
-					System.out.println(descripcion);
-					System.out.println();
-				}
-			} else {
-				for (int i = 0; i < array.length(); i++) {
-
-					JSONObject obj = array.getJSONObject(i);
-					JSONArray array_services = obj.getJSONArray("servicios");
-					JSONObject obj2 = array_services.getJSONObject(selectionCase + 1);
-
-					if (obj2.getBoolean(option) == true) {
-
-						String nombre = obj.getString("nombre");
-						String horarios = obj.getString("horarios");
-						String direccion = obj.getString("direccion");
-						String barrio = obj.getString("barrio");
-						String descripcion = obj.getString("descripcion");
-
-						System.out.println(nombre);
-						System.out.println(horarios);
-						System.out.println(direccion);
-						System.out.println(barrio);
-						System.out.println(descripcion);
-						System.out.println();
-
-					}
-
+		if(selectionCase == 1) {
+			for (Veterinary veterinary : veterinaries) {
+				if(veterinary.getServices().isCastration() == true) {
+					System.out.println(veterinary.toString());
 				}
 			}
-
-		} catch (JSONException e) {
-
-			e.printStackTrace();
+		} else if (selectionCase == 2) {
+			for (Veterinary veterinary : veterinaries) {
+				if(veterinary.getServices().isDeparasitization() == true) {
+					System.out.println(veterinary.toString());
+				}
+			}
+		} else if(selectionCase == 3) {
+			for (Veterinary veterinary : veterinaries) {
+				if(veterinary.getServices().isAdoption() == true) {
+					System.out.println(veterinary.toString());
+				}
+			}
+		} else if(selectionCase == 4) {
+			for (Veterinary veterinary : veterinaries) {
+				if(veterinary.getServices().isGroomer() == true) {
+					System.out.println(veterinary.toString());
+				}
+			}
+		} else if(selectionCase == 5) {
+			for (Veterinary veterinary : veterinaries) {
+				if(veterinary.getServices().isShop == true) {
+					System.out.println(veterinary.toString());
+				}
+			}
+		} else if(selectionCase == 6) {
+			for (Veterinary veterinary : veterinaries) {
+				System.out.println(veterinary.toString());
+			}
 		}
 	}
 
@@ -305,46 +299,53 @@ public class UserMenuApp implements I_Administration {
 		int loadMoney = 0;
 		double addCash = 0;
 
-		System.out.println("Tu saldo actual es de: " + loggedUser.getMyWallet().getAmount());
-		System.out.println("ï¿½Desea cargar saldo?\n 1 - Si | 2 - No\n");
-
-		System.out.print("Opcion: ");
-
-		loadMoney = input.nextInt();
-
-		if (loadMoney == 1) {
-
-			System.out.print("Ingrese un monto: ");
-
-			addCash = input.nextDouble();
-
-			loggedUser.getMyWallet().addCash(addCash);
-
-			System.out.println("\nFelicitaciones, se han cargado $" + addCash + ". Su saldo actual es de: $"
-					+ loggedUser.getMyWallet().getAmount() + "\n");
-
-		} else {
-
-			System.out.println("Volviendo al menu principal...\n");
-		}
+		do {
+			
+			System.out.println("\nTu saldo actual es de: $" + loggedUser.getMyWallet().getAmount());
+			System.out.println("Desea cargar saldo?\n 1 - Si | 2 - No\n");
+	
+			System.out.print("Opcion: ");
+	
+			loadMoney = input.nextInt();
+	
+			if (loadMoney == 1) {
+	
+				System.out.print("Ingrese un monto: $");
+	
+				addCash = input.nextDouble();
+	
+				loggedUser.getMyWallet().addCash(addCash);
+	
+				System.out.println("\nFelicitaciones, se han cargado $" + addCash + ". Su saldo actual es de: $"
+						+ loggedUser.getMyWallet().getAmount());
+	
+			}
+			
+			if(loadMoney != 1 && loadMoney != 2) {
+				
+				System.out.println("\n[!] Opcion incorrecta. Vuelva a intentarlo.");
+				
+			}
+			
+		}while(loadMoney != 1 && loadMoney != 2);
+		
+		System.out.println("\nVolviendo al menu principal...");
 	}
 
 	public void editUser() {
 
 		int option = 0;
+		int optionFostering = 0;
 		boolean next = false;
 
 		do {
 			try {
-				String password;
-				String email;
-				String name;
-				int age;
+
 				boolean isEnabledForFostering;
 
-				System.out.println("[EDITAR USUARIO]");
+				System.out.println("\n[EDITAR USUARIO]");
 				System.out.println("1) Ver informacion de usuario");
-				System.out.println("2) Cambiar contraseÃ±a");
+				System.out.println("2) Cambiar contrasenia");
 				System.out.println("3) Cambiar direccion de correo electronico");
 				System.out.println("4) Cambiar nombre");
 				System.out.println("5) Cambiar edad");
@@ -355,51 +356,62 @@ public class UserMenuApp implements I_Administration {
 				System.out.println("\nOpcion: ");
 
 				option = input.nextInt();
+				input.nextLine();
 
 				switch (option) {
-
+				
 				case 1:
 					System.out.println(loggedUser.toString());
 					break;
 
 				case 2:
 					System.out.print("Ingrese su nueva contraseÃ±a: ");
-					password = input.nextLine();
-					loggedUser.setPassword(password);
-					System.out.println("La contraseÃ±a ha sido modificada exitosamente !");
+					loggedUser.setPassword(input.nextLine());
+					System.out.println("La contrasenia ha sido modificada exitosamente !");
 					break;
 
 				case 3:
 					System.out.print("Ingrese su nueva direccion de correo electronico: ");
-					email = input.nextLine();
-					loggedUser.setEmail(email);
+					loggedUser.setEmail(input.nextLine());
 					System.out.println("La direccion de correo electronico ha sido modificada exitosamente !");
 					break;
 
 				case 4:
 					System.out.print("Ingrese su nuevo nombre: ");
-					name = input.nextLine();
-					loggedUser.setName(name);
-					System.out.println("La direccion de correo electronico ha sido modificada exitosamente !");
+					loggedUser.setName(input.nextLine());
+					System.out.println("El nombre de usuario ha sido modificado exitosamente !");
 					break;
 
 				case 5:
 					System.out.print("Ingrese su nueva edad: ");
-					age = input.nextInt();
-					loggedUser.setAge(age);
-					System.out.println("La direccion de correo electronico ha sido modificada exitosamente !");
+					loggedUser.setAge(input.nextInt());
+					System.out.println("La edad ha sido modificada exitosamente !");
 					break;
 
 				case 6:
-					System.out.println(
-							"Actualmente su disposicion a dar transito es: " + loggedUser.isEnabledForFostering());
-					System.out.println("Desea modificarlo? 1- Si | 2- No");
-					System.out.print("Opcion: ");
-
-					isEnabledForFostering = (loggedUser.isEnabledForFostering() == true) ? false : true;
-
-					loggedUser.setEnabledForFostering(isEnabledForFostering);
-					System.out.println("La disposicion a dar transido ha sido modificada exitosamente !");
+					
+					do {
+						
+						System.out.println(
+								"\nActualmente su disposicion a dar transito es: " + loggedUser.isEnabledForFostering());
+						System.out.println("Desea modificarlo? 1- Si | 2- No");
+						System.out.print("Opcion: ");
+						
+						optionFostering = input.nextInt();
+								
+						if(optionFostering == 1) {
+							
+							isEnabledForFostering = (loggedUser.isEnabledForFostering() == true) ? false : true;
+							loggedUser.setEnabledForFostering(isEnabledForFostering);
+							System.out.println("La disposicion a dar transido ha sido modificada exitosamente !");
+						}
+						
+						if(optionFostering != 1 && optionFostering != 2) {
+							System.out.println("\n[!] Opcion incorrecta. Vuelva a intentarlo.");
+						}
+						
+					}while(optionFostering != 1 && optionFostering != 2);
+					
 					break;
 				}
 
@@ -434,13 +446,20 @@ public class UserMenuApp implements I_Administration {
 
 		boolean isCastrate = false;
 		int optionisCastrate = 0;
+		
+		boolean pasa = true;
 
 		// Tipo de mascota
-		System.out.println("Seleccione el tipo de mascota que desea agregar:\n");
-		System.out.println("1- Perro");
-		System.out.println("2- Gato");
-		System.out.print("\nOpcion: ");
-		optionSpecie = input.nextInt();
+		
+		do {
+			
+			System.out.println("Seleccione el tipo de mascota que desea agregar:\n");
+			System.out.println("1- Perro");
+			System.out.println("2- Gato");
+			System.out.print("\nOpcion: ");
+			optionSpecie = input.nextInt();
+			
+		}while(optionSpecie != 1 && optionSpecie != 2); //Contemplar ingreso de Strings para que se repita solo este menu
 
 		// Nombre mascota
 		System.out.println();
