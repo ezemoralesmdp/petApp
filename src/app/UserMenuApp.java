@@ -158,7 +158,7 @@ public class UserMenuApp implements I_Administration {
 //					temporary.setAdoption(veterinaries.get(i).getListOfAppointments().get(j).isAdoption());
 //					temporary.setGroomer(veterinaries.get(i).getListOfAppointments().get(j).isGroomer());
 //					loggedUser.listOfAssignedAppointments.add(temporary); //se le agrega el nuevo turno asignado
-					loggedUser.listOfAssignedAppointments.add(veterinaries.get(i).getListOfAppointments().get(j));
+					//loggedUser.listOfAssignedAppointments.add(veterinaries.get(i).getListOfAppointments().get(j));
 					
 					veterinaries.remove(veterinaries.get(i).getListOfAppointments().get(j));
 				}
