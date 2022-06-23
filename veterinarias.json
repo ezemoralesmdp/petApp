@@ -24,7 +24,7 @@
 	    "desparacitacion": false,
 	    "adopcion": false,
 	    "peluqueria": true,
-	    "isTienda": false
+	    "isTienda": true
     }
   },
   {
@@ -49,8 +49,8 @@
     "descripcion": "Especializacion: peluquería canina. Tienda.",
     "servicios": {
 	    "castracion": true,
-	    "desparacitacion": false,
-	    "adopcion": false,
+	    "desparacitacion": true,
+	    "adopcion": true,
 	    "peluqueria": true,
 	    "isTienda": false
     }
@@ -63,10 +63,10 @@
     "descripcion": "Especializacion: castración y desparacitación de perros y gatos. Peluquería animal. Adopción disponible. Tienda.",
     "servicios": {
 	    "castracion": true,
-	    "desparacitacion": false,
+	    "desparacitacion": true,
 	    "adopcion": false,
-	    "peluqueria": true,
-	    "isTienda": false
+	    "peluqueria": false,
+	    "isTienda": true
     }
   }
 ]

@@ -10,12 +10,10 @@ public abstract class Animal implements Serializable {
 	private String gender;
 	private String healthStatus;
 	private int age;
-	private String birthdate;
 	private String breed;
 	private boolean isCastrate;
 	
 	//Constructor
-	
 	public Animal() {
 		
 	}
@@ -71,14 +69,6 @@ public abstract class Animal implements Serializable {
 		this.age = age;
 	}
 
-	public String getBirthdate() {
-		return birthdate;
-	}
-
-	public void setBirthdate(String birthdate) {
-		this.birthdate = birthdate;
-	}
-	
 	public String getBreed() {
 		return breed;
 	}

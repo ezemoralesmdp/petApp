@@ -8,6 +8,8 @@ import org.json.JSONObject;
 
 public class JSONManager {
 		
+	
+	
 	public static ArrayList<Veterinary> readJson() {
 		
 		String source = JSONUtiles.leer("veterinarias");

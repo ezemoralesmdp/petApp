@@ -38,6 +38,9 @@ public class UserMenuApp implements I_Administration {
 				System.out.println("6) Ir a la tienda"); // x Ver mensajes que se invierten
 				System.out.println("7) Opciones de usuario"); // x
 				System.out.println("8) Cargar / Ver saldo"); // x
+				System.out.println("9) Exportar datos de usuario");
+				
+				//Nombre, edad, los animales, turnos
 
 				System.out.println();
 				System.out.print("Opcion: ");
@@ -204,44 +207,43 @@ public class UserMenuApp implements I_Administration {
 
 				switch (option) {
 
-				case 0:
-					break;
-
-				case 1:
-					System.out.println("[FILTRADO POR CASTRACION]\n");
-					filterByOption(1);
-					break;
-
-				case 2:
-					System.out.println("[FILTRADO POR DESPARACITACI�N]\n");
-					filterByOption(2);
-					break;
-
-				case 3:
-					System.out.println("[FILTRADO POR ADOPCION]\n");
-					filterByOption(3);
-					break;
-
-				case 4:
-					System.out.println("[FILTRADO POR PELUQUERIA]\n");
-					filterByOption(4);
-					break;
-
-				case 5:
-					System.out.println("[FILTRADO POR TIENDA - SHOP]\n");
-					filterByOption(5);
-					break;
-
-				case 6:
-					System.out.println("[MOSTRANDO TODAS LAS VETERINARIAS]\n");
-					filterByOption(6);
-					break;
-
-				default: {
-					System.out.println("[!] La opcion " + option + " es inexistente, por favor vuelva a intentarlo.");
-					break;
-				}
-
+					case 0:
+						break;
+	
+					case 1:
+						System.out.println("[FILTRADO POR CASTRACION]\n");
+						filterByOption(option);
+						break;
+	
+					case 2:
+						System.out.println("[FILTRADO POR DESPARACITACI�N]\n");
+						filterByOption(option);
+						break;
+	
+					case 3:
+						System.out.println("[FILTRADO POR ADOPCION]\n");
+						filterByOption(option);
+						break;
+	
+					case 4:
+						System.out.println("[FILTRADO POR PELUQUERIA]\n");
+						filterByOption(option);
+						break;
+	
+					case 5:
+						System.out.println("[FILTRADO POR TIENDA - SHOP]\n");
+						filterByOption(option);
+						break;
+	
+					case 6:
+						System.out.println("[MOSTRANDO TODAS LAS VETERINARIAS]\n");
+						filterByOption(option);
+						break;
+	
+					default: {
+						System.out.println("[!] La opcion " + option + " es inexistente, por favor vuelva a intentarlo.");
+						break;
+					}
 				}
 
 			} catch (InputMismatchException e) {
@@ -663,7 +665,6 @@ public class UserMenuApp implements I_Administration {
 		for (Animal pet : loggedUser.getAnimals()) {
 
 			System.out.println(pet.toString());
-			// Falta mostrar vacunas y CARGARLAS
 		}
 	}
 
