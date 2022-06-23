@@ -26,6 +26,8 @@ public class Main {
 		testSubject.setAge(5);
 		testSubject.setEnabledForFostering(true);
 		testSubject.setMyWallet(aWallet);
+//		Animal cat = new Cat("papri", "cat", "female", "healthy", 1, "tricolor", false);
+//		testSubject.addAnimal(cat);
 		
 		//Creamos un shop
 		//A partir del segundo usuario setear el usuario que ya existe
@@ -36,6 +38,13 @@ public class Main {
 		UserMenuApp menu = new UserMenuApp(testSubject, aPetShop);
 		menu.menu();
 		
+//		Service services = new Service(true,true,true,true,true);
+//		
+//		Veterinary walrus = new Veterinary("walrus","9:00 a 18:00", "pepe 323", "parque luro", "una vet de walrus",services);
+//
+//		Appointment ajsja = new Appointment(1,"18:20","28/06/2022",testSubject.getName(),testSubject.getAnimals().get(0));
+//		
+//		walrus.getListOfAppointments().add(ajsja);
 	}
 	
 }

@@ -14,6 +14,7 @@ public class User implements Serializable {
 	private ArrayList <Animal> animals;
 	private boolean isEnabledForFostering;
 	private Wallet myWallet;
+	ArrayList<Appointment> listOfAssignedAppointments;
 	
 	//Constructor
 	
@@ -119,6 +120,14 @@ public class User implements Serializable {
 			  "Transito: " + isEnabledForFostering;
 		
 		return aux;
+	}
+	
+	public void showListOfAnimals()
+	{
+		for(int i=0;i<animals.size();i++)
+		{
+			System.out.println(animals.toString());
+		}
 	}
 	
 }
