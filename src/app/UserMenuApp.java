@@ -15,7 +15,7 @@ public class UserMenuApp implements I_Administration {
 		this.shop = aPetShop;
 	}
 
-	public void menu() {
+	public void menu(ArrayList<User> users) {
 
 		int option = 0;
 		boolean next = false;
@@ -41,6 +41,8 @@ public class UserMenuApp implements I_Administration {
 				System.out.println("8) Cargar / Ver saldo"); // x
 				System.out.println("9) Exportar datos de usuario");
 				
+				System.out.println("\n0) Guardar y salir del programa");
+				
 				//Nombre, edad, los animales, turnos
 
 				System.out.println();
@@ -49,6 +51,12 @@ public class UserMenuApp implements I_Administration {
 
 				switch (option) {
 
+				case 0:
+					
+					JSONManager.userArrayToJSONFile(users);
+					System.out.println("Guardando datos y saliendo, Hasta Pronto!");
+					
+					break;
 				// Reserva un Turno
 				case 1:
 					assignAppointment();

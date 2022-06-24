@@ -2,6 +2,7 @@ package app;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Objects;
 
 public class User implements Serializable {
@@ -13,7 +14,7 @@ public class User implements Serializable {
 	private String name;
 	private int age;
 	private ArrayList <Animal> animals;
-	private ArrayList <Appointment> listOfAssignedAppointments;
+	private LinkedList <Appointment> listOfAssignedAppointments;
 	private boolean isEnabledForFostering;
 	private Wallet myWallet;
 	
@@ -72,6 +73,18 @@ public class User implements Serializable {
 	public ArrayList<Animal> getAnimals() {
 		return animals;
 	}
+	public void setAnimals(ArrayList<Animal> animals) {
+		this.animals = animals;
+	}
+
+	public LinkedList<Appointment> getListOfAssignedAppointments() {
+		return listOfAssignedAppointments;
+	}
+
+	public void setListOfAssignedAppointments(LinkedList<Appointment> listOfAssignedAppointments) {
+		this.listOfAssignedAppointments = listOfAssignedAppointments;
+	}
+
 
 	public void addAnimal(Animal animal) {
 		animals.add(animal);

@@ -14,6 +14,12 @@ public class PetShop {
 	private int amountClothes = 7;
 	private int amountFoods = 10;
 
+	
+	public PetShop() {
+		stockToys = new Stock<Toy>();
+		stockClothes = new Stock<Clothe>();
+		stockFoods = new Stock<Food>();
+	}
 	// Usuario
 	User loggedUser;
 

@@ -1,0 +1,26 @@
+[
+	{
+		"password": "1232",
+		"appointments": [
+		],
+		"wallet": {
+			"amount": 7000
+		},
+		"name": "Daniel",
+		"enabledForFostering": true,
+		"animals": [
+			{
+				"specie": "",
+				"gender": "",
+				"healthStatus": "",
+				"name": "",
+				"castrate": false,
+				"age": 0,
+				"breed": ""
+			}
+		],
+		"user": "dany.diaz1",
+		"email": "danielferdiazz@gmail.com",
+		"age": 21
+	}
+]

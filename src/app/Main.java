@@ -8,35 +8,34 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		//Cargar hashMap con usuarios antes de inicializar la PetApp
-		MainMenuApp petApp = new MainMenuApp();
+		MainMenuApp2 petApp = new MainMenuApp2();
 			
 		petApp.menu();
 		
 		//Wallete de Garfield
-		Wallet aWallet = new Wallet();
-		aWallet.addCash(5000);
+		//Wallet aWallet = new Wallet();
+		//aWallet.addCash(5000);
 		
 		//Sujeto de prueba Garfield
-		User testSubject = new User();
+		/*User testSubject = new User();
 		testSubject.setUser("michi666");
 		testSubject.setPassword("miau123");
 		testSubject.setEmail("iamsocute@gmail.com");
 		testSubject.setName("Garfield");
 		testSubject.setAge(5);
 		testSubject.setEnabledForFostering(true);
-		testSubject.setMyWallet(aWallet);
+		testSubject.setMyWallet(aWallet);*/
 //		Animal cat = new Cat("papri", "cat", "female", "healthy", 1, "tricolor", false);
 //		testSubject.addAnimal(cat);
 		
 		//Creamos un shop
 		//A partir del segundo usuario setear el usuario que ya existe
-		PetShop aPetShop = new PetShop(testSubject);
-		aPetShop.cargarProductos();
+		//PetShop aPetShop = new PetShop(testSubject);
+		//aPetShop.cargarProductos();
 		
 		//Entramos al menu directamente para ahorrarnos el inicio de sesion
-		UserMenuApp menu = new UserMenuApp(testSubject, aPetShop);
-		menu.menu();
+		/*UserMenuApp menu = new UserMenuApp(testSubject, aPetShop);
+		menu.menu();*/
 		
 //		Service services = new Service(true,true,true,true,true);
 //		
