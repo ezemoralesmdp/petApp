@@ -1,34 +1,28 @@
 package app;
 
-public class userAlredyExists extends Exception{
+public class WrongUserException extends Exception{
 
 	private String userName;
 	
-	public userAlredyExists(String message,String userName) {
+	public WrongUserException(String message,String userName) {
 		super(message);
 		this.userName=userName;
 	}
 
-	
-	
 	public String getUserName() {
 		return userName;
 	}
-
-
 
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
 
-
-
 	@Override
 	public String getMessage() {
-		return super.getMessage()+ getUserName()+" ya esta registrado, ingrese otro usuario.";
+		// TODO Auto-generated method stub
+		return super.getMessage()+getUserName()+" no existe.";
 	}
+	
+	
 
-	
-	
-	
 }

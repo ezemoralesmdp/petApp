@@ -12,7 +12,7 @@ import org.json.JSONObject;
 	public static void grabar(JSONArray array) {
 		
 		try {
-			FileWriter file = new FileWriter("test.json");
+			FileWriter file = new FileWriter("users.json");
 			file.write(array.toString());
 			file.flush();
 			file.close();

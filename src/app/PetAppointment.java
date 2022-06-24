@@ -68,7 +68,6 @@ public class PetAppointment {
 		boolean next = false;
 		
 		try {
-		
 		this.veterinaries = veterinaries;
 		availableShiftLoad(loggedUser); //Cargo turnos en veterinarias
 		selectPetUser(loggedUser);
@@ -86,6 +85,7 @@ public class PetAppointment {
 	public void selectPetUser(User loggedUser)
 	{
 		String petsName = "";
+		boolean flag = false;
 		
 		if(loggedUser.getAnimals() != null) {
 			
@@ -98,15 +98,19 @@ public class PetAppointment {
 			for(int i = 0; i < loggedUser.getAnimals().size(); i++) {
 				
 				if(loggedUser.getAnimals().get(i).getName().equals(petsName)) {
+					
+					flag = true;
 					//Mostrar turnos
 					showAppoinmentsToUser();
 					
 					//Reservar y asignar turno
 					appointmentMaking(loggedUser.getAnimals().get(i), loggedUser);
 					
-				} else {
-					System.out.println("\n[!] " + petsName + " no existe ! Volviendo al menu principal...\n");
-				}
+				} 
+			}
+			
+			if(flag == false) {
+				System.out.println("\n[!] " + petsName + " no existe ! Volviendo al menu principal...\n");
 			}
 			
 		} else {

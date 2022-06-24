@@ -119,6 +119,14 @@ public class User implements Serializable {
         	System.out.println(animal.getName());
 		}
     }
+	
+	public void setAnimals(ArrayList<Animal> animals) {
+		this.animals = animals;
+	}
+	
+	public void setListOfAssignedAppointments(LinkedList<Appointment> listOfAssignedAppointments) {
+		this.listOfAssignedAppointments = listOfAssignedAppointments;
+	}
 
 	@Override
 	public int hashCode() {

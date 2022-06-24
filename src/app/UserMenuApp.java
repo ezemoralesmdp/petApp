@@ -7,7 +7,6 @@ public class UserMenuApp implements I_Administration {
 	Scanner input = new Scanner(System.in);
 	PetShop shop;
 	PetAppointment appointment;
-	
 	User loggedUser;
 	ArrayList<Veterinary> veterinaries = JSONManager.readJson();
 
@@ -18,7 +17,7 @@ public class UserMenuApp implements I_Administration {
 		this.appointment = appointment;
 	}
 
-	public void menu() {
+	public void menu(ArrayList<User> users) {
 
 		int option = 0;
 		boolean next = false;
@@ -33,22 +32,32 @@ public class UserMenuApp implements I_Administration {
 				System.out.println("\nBienvenido " + loggedUser.getName() + "!");
 				System.out.println("SALDO ACTUAL: $" + loggedUser.getMyWallet().getAmount() + "\n");
 
-				System.out.println("1) Reserva un Turno"); // --
+				System.out.println("1) Reserva un Turno"); // x
 				System.out.println("2) Ver veterinarias"); // x
-				System.out.println("3) Agrega tu mascota"); // x -- Chequear lo que dijo benoffi
-				System.out.println("4) Poner en adopcion"); // --
-				System.out.println("5) Ver mascotas en adopcion"); // --
+				System.out.println("3) Agrega tu mascota"); // x
+				System.out.println("4) Poner en adopcion (No disponible)"); // --
+				System.out.println("5) Ver mascotas en adopcion (No disponible)"); // --
 				System.out.println("6) Ir a la tienda"); // x Ver mensajes que se invierten
 				System.out.println("7) Opciones de usuario"); // x
 				System.out.println("8) Cargar / Ver saldo"); // x
-				System.out.println("9) Exportar datos de usuario");
+				System.out.println("9) Exportar datos de usuario"); // x
+				
+				System.out.println("\n0) Guardar y salir del programa");
 				
 				//Nombre, edad, los animales, turnos
+				
 				System.out.println();
 				System.out.print("Opcion: ");
 				option = input.nextInt();
 
 				switch (option) {
+				
+				case 0:
+					
+					JSONManager.userArrayToJSONFile(users);
+					System.out.println("Guardando datos y saliendo, Hasta Pronto!");
+					
+					break;
 
 				// Reserva un Turno
 				case 1:
@@ -672,12 +681,14 @@ public class UserMenuApp implements I_Administration {
 
 	@Override
 	public void seeAll() {
+		
+		ArrayList<Animal> animals = loggedUser.getAnimals();
 
 		if(loggedUser.getAnimals() != null) {
 			
-			for (Animal pet : loggedUser.getAnimals()) {
+			for(int i = 1; i < loggedUser.getAnimals().size(); i++) {
 				
-				System.out.println(pet.toString());
+				System.out.println(animals.get(i).toString());
 			}
 			
 		} else {
