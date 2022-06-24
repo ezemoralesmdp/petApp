@@ -1,6 +1,7 @@
 package app;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -64,9 +65,20 @@ public class PetAppointment {
 	
 	public void petAppointmentMenu(User loggedUser, ArrayList<Veterinary> veterinaries) {
 		
+		boolean next = false;
+		
+		try {
+		
 		this.veterinaries = veterinaries;
 		availableShiftLoad(loggedUser); //Cargo turnos en veterinarias
 		selectPetUser(loggedUser);
+		
+		} catch (InputMismatchException e) {
+
+			input.next();
+			System.out.println("\n[!] Debe ingresar obligatoriamente un número entero.");
+			next = true;
+		}
 	}
 	
 	//----------------------------------------------------------------------------------------------------------------------------------
@@ -110,9 +122,17 @@ public class PetAppointment {
 		int confirmShift = 0;
 		Veterinary aux = null;
 		
-		//Cada id debe ser distinto por turno, no puede haber 2 turnos con el mismo id, implementar equals?
-		System.out.print("\n[!] Seleccione una Veterinaria: ");
-		chosenId = input.nextInt();
+		do {
+			
+			System.out.print("[!] Seleccione una Veterinaria: ");
+			chosenId = input.nextInt();
+			
+			if(chosenId < 1 || chosenId > 5) {
+				
+				System.out.println("\n[!] Error. Ingrese una opcion correcta.\n");
+			}
+			
+		}while(chosenId < 1 || chosenId > 5);
 		
 		chosenId--;
 			
@@ -157,6 +177,7 @@ public class PetAppointment {
 				System.out.println(numberVeterinary+1 + ") VETERINARIA: " + veterinary.getName());
 				numberVeterinary++;
 			}
-
+			
+			System.out.println();
 	}
 }

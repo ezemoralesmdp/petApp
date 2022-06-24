@@ -27,8 +27,6 @@ public class Main {
 		testSubject.setEnabledForFostering(true);
 		testSubject.setMyWallet(aWallet);
 		
-		
-		
 //		Animal cat = new Cat("papri", "cat", "female", "healthy", 1, "tricolor", false);
 //		testSubject.addAnimal(cat);
 		

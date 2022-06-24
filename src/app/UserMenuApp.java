@@ -94,7 +94,7 @@ public class UserMenuApp implements I_Administration {
 					break;
 
 				default:
-					System.out.println("Error. Numero de operacion incorrecta, por favor vuelva a ingresar la opcion");
+					System.out.println("\n[!] Error. Numero de operacion incorrecta, por favor vuelva a ingresar la opcion.");
 					break;
 				}
 				
@@ -422,7 +422,7 @@ public class UserMenuApp implements I_Administration {
 				next = true;
 			}
 
-		} while ((option >= 1 || option >= 6)|| next==true);
+		} while ((option >= 1 || option >= 6) || next==true);
 
 	}
 
@@ -534,18 +534,32 @@ public class UserMenuApp implements I_Administration {
 
 	@Override
 	public void remove() {
-		String name;
+		
+		String name = "";
 		int index = 0;
 		System.out.print("Ingrese el nombre de la mascota que quiere eliminar: ");
 		input.nextLine();
 		name = input.nextLine();
 
-		for (int i = 0; i < loggedUser.getAnimals().size(); i++) {
-			if (loggedUser.getAnimals().get(i).getName().equals(name)) {
-				index = i;
+		try {
+			
+			for (int i = 0; i < loggedUser.getAnimals().size(); i++) {
+				
+				if (loggedUser.getAnimals().get(i).getName().equals(name)) {
+					name = loggedUser.getAnimals().get(i).getName();
+					index = i;
+					loggedUser.removeAnimal(index);
+					System.out.println("\n[!] '" + name + "' ha sido eliminado exitosamente !");
+					
+				}else {
+					System.out.println("\n[!] '" + name + "' no existe !");
+				}
+					
 			}
+			
+		} catch (NullPointerException e) {
+			
 		}
-		loggedUser.removeAnimal(index);
 	}
 
 	@Override
@@ -659,14 +673,21 @@ public class UserMenuApp implements I_Administration {
 	@Override
 	public void seeAll() {
 
-		for (Animal pet : loggedUser.getAnimals()) {
-
-			System.out.println(pet.toString());
+		if(loggedUser.getAnimals() != null) {
+			
+			for (Animal pet : loggedUser.getAnimals()) {
+				
+				System.out.println(pet.toString());
+			}
+			
+		} else {
+			System.out.println("\n[!] Usted no posee mascotas añadidas.");
 		}
 	}
 	
 	public void exportPersonalInfo() {
 		
 		JSONManager.createPersonalJSON(loggedUser);
+		System.out.println("[!] 'myPersonalInfo.json' ha sido creado exitosamente !\n");
 	}
 }
