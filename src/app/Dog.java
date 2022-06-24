@@ -12,12 +12,5 @@ public class Dog extends Animal  {
 		super(name, specie, gender, healthStatus, age, breed, isCastrate);
 
 	}
-
-	@Override
-	public String toString() {
-		return "Dog []" + toString();
-	}
-	
-	
 }
 

@@ -6,20 +6,22 @@ public class UserMenuApp implements I_Administration {
 
 	Scanner input = new Scanner(System.in);
 	PetShop shop;
+	PetAppointment appointment;
+	
 	User loggedUser;
 	ArrayList<Veterinary> veterinaries = JSONManager.readJson();
 
 	// Constructor
-	public UserMenuApp(User loggedUser, PetShop aPetShop) {
+	public UserMenuApp(User loggedUser, PetShop aPetShop, PetAppointment appointment) {
 		this.loggedUser = loggedUser;
 		this.shop = aPetShop;
+		this.appointment = appointment;
 	}
 
 	public void menu() {
 
 		int option = 0;
 		boolean next = false;
-		
 		
 		do {
 
@@ -42,7 +44,6 @@ public class UserMenuApp implements I_Administration {
 				System.out.println("9) Exportar datos de usuario");
 				
 				//Nombre, edad, los animales, turnos
-
 				System.out.println();
 				System.out.print("Opcion: ");
 				option = input.nextInt();
@@ -51,7 +52,7 @@ public class UserMenuApp implements I_Administration {
 
 				// Reserva un Turno
 				case 1:
-					assignAppointment();
+					appointment.petAppointmentMenu(loggedUser, veterinaries);
 					break;
 
 				// Ver veterinarias
@@ -82,8 +83,14 @@ public class UserMenuApp implements I_Administration {
 					editUser();
 					break;
 
+				//Cargar y mostrar billetar
 				case 8:
 					loadAndViewMoneyInMyWallet();
+					break;
+					
+				//Exportar información personal
+				case 9:
+					exportPersonalInfo();
 					break;
 
 				default:
@@ -101,210 +108,6 @@ public class UserMenuApp implements I_Administration {
 		} while ((option >= 1 || option >= 8) || next == true);
 	}
 	
-	public void assignAppointment() 
-	{
-		selectPet(); //llama a la funcion mostrar turnos
-	}
-	
-	public void selectPet()
-	{
-		String petsName="";
-		
-		loggedUser.showListOfAnimals();
-		System.out.print("Ingrese el nombre de la mascota a la que desea sacarle un turno: \n");
-		petsName = input.nextLine();
-		
-		for(int i=0;i<loggedUser.getAnimals().size();i++)
-		{
-			if(loggedUser.getAnimals().get(i).getName() == petsName)
-			{
-				//mostrar turnos
-				showAppoinmentsToUser();
-				//reservar y asignar turno
-				appointmentMaking(loggedUser.getAnimals().get(i));
-				
-			}
-			else
-			{
-				//no existe
-			}
-		}
-	}
-	
-	@SuppressWarnings("unlikely-arg-type") //???????????
-	public void appointmentMaking(Animal aPet)
-	{
-		int chosenId=0;
-		
-		//cada id debe ser distinto por turno, no puede haber 2 turnos con el mismo id, implementar equals?
-		System.out.print("Ingrese el id del turno que desea reservar \n");
-		chosenId = input.nextInt();
-		
-		for(int i=0;i<veterinaries.size();i++)
-		{
-			for(int j=0;j<veterinaries.get(i).getListOfAppointments().size();j++)
-			{
-				if(veterinaries.get(i).getListOfAppointments().get(j).getId() == chosenId)
-				{
-					//asignar y eliminar del array
-//					Appointment temporary= new Appointment(); //turno temporal para setearle los datos del turno a eliminar
-//					temporary.setId(veterinaries.get(i).getListOfAppointments().get(j).getId());
-//					temporary.setTime(veterinaries.get(i).getListOfAppointments().get(j).getTime());
-//					temporary.setDate(veterinaries.get(i).getListOfAppointments().get(j).getTime());
-//					temporary.setUserAssigned(veterinaries.get(i).getListOfAppointments().get(j).getUserAssigned());
-//					temporary.setUsersPetAssigned(veterinaries.get(i).getListOfAppointments().get(j).getUsersPetAssigned());
-//					temporary.setCastration(veterinaries.get(i).getListOfAppointments().get(j).isCastration());
-//					temporary.setDeparasitization(veterinaries.get(i).getListOfAppointments().get(j).isDeparasitization());
-//					temporary.setAdoption(veterinaries.get(i).getListOfAppointments().get(j).isAdoption());
-//					temporary.setGroomer(veterinaries.get(i).getListOfAppointments().get(j).isGroomer());
-//					loggedUser.listOfAssignedAppointments.add(temporary); //se le agrega el nuevo turno asignado
-					//loggedUser.listOfAssignedAppointments.add(veterinaries.get(i).getListOfAppointments().get(j));
-					
-					veterinaries.remove(veterinaries.get(i).getListOfAppointments().get(j));
-				}
-			}
-		}
-		
-	}
-	
-	
-	public void showAppoinmentsToUser()
-	{
-		//mostrar turnos por filtro
-				int optionAppointments = 0;
-				String nameToSearch = "";
-				
-				System.out.println("1) Mostrar todos los turnos");
-				System.out.println("2) Filtrar turnos por veterinaria"); 
-				System.out.println("3) Filtrar turnos por especialidad"); 
-				System.out.println("4) Salir"); 
-
-				System.out.println();
-				System.out.print("Opcion: ");
-				optionAppointments = input.nextInt();
-				
-				switch (optionAppointments) {
-				
-				case 1: // mostrar todos los turnos
-					for(int j=0;j<veterinaries.size();j++)
-					{
-						veterinaries.get(j).getListOfAppointments();
-						
-					}
-					break;
-
-				case 2: // mostrar por nombre de veterinaria
-					
-					System.out.print("Ingrese nombre de la veterinaria a buscar turnos: \n ");
-					nameToSearch = input.nextLine();
-					
-					for(int j=0;j<veterinaries.size();j++)
-					{
-						if(veterinaries.get(j).getName()==nameToSearch)
-						{
-							veterinaries.get(j).getListOfAppointments();
-						}
-						else
-						{
-							System.out.println("\n[!] No se encontro ninguna veterinaria con el nombre ingresado [!]\n");
-						}
-					}
-						
-					break;
-					
-				case 3: // mostrar por especialidad
-					
-					optionAppointments=0;
-					System.out.print("Ingrese el numero correspondiente a la especialidad que busca\n");
-					System.out.println("1) Castracion");
-					System.out.println("2) Desparacitacion"); 
-					System.out.println("3) Adopcion"); 
-					System.out.println("4) Peluqueria"); 
-					System.out.println("5) Salir");
-
-					System.out.println();
-					System.out.print("Opcion: ");
-					optionAppointments = input.nextInt();
-					
-						switch (optionAppointments) {
-						case 1: 
-						
-							for(int j=0;j<veterinaries.size();j++)
-							{
-								if(veterinaries.get(j).getServices().isCastration() == true)
-								{
-									veterinaries.get(j).getListOfAppointments();
-								}
-								else
-								{
-									System.out.println("\n[!] No se encontraron turnos para el servicio de castracion  [!]\n");
-								}
-							}
-							break;
-						
-						case 2:
-						
-							for(int j=0;j<veterinaries.size();j++)
-							{
-								if(veterinaries.get(j).getServices().isDeparasitization() == true)
-								{
-									veterinaries.get(j).getListOfAppointments();
-								}
-								else
-								{
-									System.out.println("\n[!] No se encontraron turnos para el servicio de desparacitacion  [!]\n");
-								}
-							}
-							break;
-						
-						case 3:
-						
-							
-							for(int j=0;j<veterinaries.size();j++)
-							{
-								if(veterinaries.get(j).getServices().isAdoption() == true)
-								{
-									veterinaries.get(j).getListOfAppointments();
-								}
-								else
-								{
-									System.out.println("\n[!] No se encontraron turnos para el servicio de adopcion  [!]\n");
-								}
-							}
-							break;
-						
-						case 4:
-						
-							for(int j=0;j<veterinaries.size();j++)
-							{
-								if(veterinaries.get(j).getServices().isGroomer() == true)
-								{
-									veterinaries.get(j).getListOfAppointments();
-								}
-								else
-								{
-									System.out.println("\n[!] No se encontraron turnos para el servicio de peluqueria  [!]\n");
-								}
-							}
-							break;
-						
-						case 5:
-							break;
-						
-						default:
-							throw new IllegalArgumentException("Unexpected value: " + optionAppointments);
-						}
-					
-					
-					break;
-
-				case 4:
-					break;
-				default:
-					throw new IllegalArgumentException("Unexpected value: " + optionAppointments);
-				}
-	}
-
 	public void addAnimal() {
 
 		int option = 0;
@@ -587,7 +390,7 @@ public class UserMenuApp implements I_Administration {
 				case 6:
 					
 					do {
-						
+		
 						System.out.println(
 								"\nActualmente su disposicion a dar transito es: " + loggedUser.isEnabledForFostering());
 						System.out.println("Desea modificarlo? 1- Si | 2- No");
@@ -862,6 +665,8 @@ public class UserMenuApp implements I_Administration {
 		}
 	}
 	
-	
-
+	public void exportPersonalInfo() {
+		
+		JSONManager.createPersonalJSON(loggedUser);
+	}
 }

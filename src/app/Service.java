@@ -1,7 +1,7 @@
 package app;
 
 public class Service {
-	
+
 	boolean castration;
 	boolean deparasitization;
 	boolean adoption;
@@ -36,4 +36,13 @@ public class Service {
 	public boolean isShop() {
 		return isShop;
 	}	
+	
+	@Override
+	public String toString() {
+		return "Castracion: " + castration + "\n" +
+				"Desparacitacion: " + deparasitization + "\n" + 
+				"Adopcion: " + adoption + "\n" + 
+				"Peluqueria: " + groomer + "\n" +
+				"Tienda: " + isShop + "\n";
+	}
 }

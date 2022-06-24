@@ -12,7 +12,7 @@ public class Appointment {
 	private String userAssigned;
 	private Animal usersPetAssigned;
 	
-	public Appointment(int id,String time, String date,String userAssigned,Animal usersPetAssigned) {
+	public Appointment(int id, String time, String date, String userAssigned) {
 		super();
 		this.id= id;
 		this.time = time;
@@ -22,11 +22,9 @@ public class Appointment {
 		this.adoption = false;
 		this.groomer = false;
 		this.userAssigned=userAssigned;
-		this.usersPetAssigned=usersPetAssigned;
 	}
 
-	public Appointment() {
-		// TODO Auto-generated constructor stub
+	public Appointment() { 
 	}
 
 	public String getTime() {
@@ -103,8 +101,7 @@ public class Appointment {
 
 	@Override
 	public String toString() {
-		return "Appointment [id=" + id + ", time=" + time + ", date=" + date + ", castration=" + castration
-				+ ", deparasitization=" + deparasitization + ", adoption=" + adoption + ", groomer=" + groomer + "]";
+		return "Turno [ID: " + id + ", Horario: " + time + ", Dia: " + date + "]\n";
 	}
 	
 	

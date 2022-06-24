@@ -12,7 +12,7 @@ public class Veterinary {
 	private String description;
 	
 	private Service services;
-	private ArrayList<Appointment> listOfAppointments;
+	private LinkedList<Appointment> listOfAppointments;
 	
 	public Veterinary(String name, String openingHours, String address, String neighborhood, String description,
 			Service services) {
@@ -23,20 +23,14 @@ public class Veterinary {
 		this.neighborhood = neighborhood;
 		this.description = description;
 		this.services = services;
-		listOfAppointments = new ArrayList<>();
+		listOfAppointments = new LinkedList<>();
 	}
 	
 	public Service getServices() {
 		return services;
 	}
-
-	@Override
-	public String toString() {
-		return "Veterinary [name=" + name + ", openingHours=" + openingHours + ", address=" + address
-				+ ", neighborhood=" + neighborhood + ", description=" + description + ", services=" + services + "]";
-	}
 	
-	public ArrayList<Appointment> getListOfAppointments() {
+	public LinkedList<Appointment> getListOfAppointments() {
 		return listOfAppointments;
 	}
 
@@ -84,9 +78,17 @@ public class Veterinary {
 		this.services = services;
 	}
 
-	public void setListOfAppointments(ArrayList<Appointment> listOfAppointments) {
+	public void setListOfAppointments(LinkedList<Appointment> listOfAppointments) {
 		this.listOfAppointments = listOfAppointments;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "\nVeterinaria: " + name + "\n" + 
+				"Horarios: " + openingHours + "\n" + 
+				"Direccion: " + address + "\n" + 
+				"Barrio: " + neighborhood + "\n" + 
+				"Descripcion: " + description + "\n" +
+				"Servicios: \n" + services;
+	}
 }

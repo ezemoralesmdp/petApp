@@ -10,14 +10,4 @@ public class Cat extends Animal {
 		super(name, specie, gender, healthStatus, age, breed, isCastrate);
 
 	}
-
-	@Override
-	public String toString() {
-		return "Cat []" + toString();
-	}
-
-	//Getters & Setters
-
-	
-	
 }

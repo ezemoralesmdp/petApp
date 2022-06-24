@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 	public class JSONUtiles {
 		
@@ -13,6 +14,19 @@ import org.json.JSONArray;
 		try {
 			FileWriter file = new FileWriter("test.json");
 			file.write(array.toString());
+			file.flush();
+			file.close();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void grabar(JSONObject myPersonalInfo) {
+		
+		try {
+			FileWriter file = new FileWriter("myPersonalInfo.json");
+			file.write(myPersonalInfo.toString());
 			file.flush();
 			file.close();
 

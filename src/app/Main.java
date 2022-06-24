@@ -9,9 +9,9 @@ public class Main {
 	public static void main(String[] args) {
 		
 		//Cargar hashMap con usuarios antes de inicializar la PetApp
-		MainMenuApp petApp = new MainMenuApp();
+		//MainMenuApp petApp = new MainMenuApp();
 			
-		petApp.menu();
+		//petApp.menu();
 		
 		//Wallete de Garfield
 		Wallet aWallet = new Wallet();
@@ -26,6 +26,9 @@ public class Main {
 		testSubject.setAge(5);
 		testSubject.setEnabledForFostering(true);
 		testSubject.setMyWallet(aWallet);
+		
+		
+		
 //		Animal cat = new Cat("papri", "cat", "female", "healthy", 1, "tricolor", false);
 //		testSubject.addAnimal(cat);
 		
@@ -34,8 +37,11 @@ public class Main {
 		PetShop aPetShop = new PetShop(testSubject);
 		aPetShop.cargarProductos();
 		
+		//Creamos turnos
+		PetAppointment petAppointment = new PetAppointment();
+		
 		//Entramos al menu directamente para ahorrarnos el inicio de sesion
-		UserMenuApp menu = new UserMenuApp(testSubject, aPetShop);
+		UserMenuApp menu = new UserMenuApp(testSubject, aPetShop, petAppointment);
 		menu.menu();
 		
 //		Service services = new Service(true,true,true,true,true);
